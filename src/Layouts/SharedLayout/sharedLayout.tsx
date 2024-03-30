@@ -3,6 +3,7 @@ import SharedNavbar from "./SharedNavbar/sharedNavbar";
 import { ISharedLayoutProps } from "./interface";
 import { Layout } from "antd";
 import { useAppMediaQuery } from "@/Hooks/MediaQuery/use-app-media-query";
+import SharedFooter from "./Footer/sharedFooter";
 
 const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
   const { isTabletOrMobile } = useAppMediaQuery();
@@ -15,9 +16,7 @@ const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
         <Content style={{ padding: "0 50px" }}>
           <div className="site-layout-content">{children}</div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <SharedFooter/>
       </Layout>
     </div>
   );

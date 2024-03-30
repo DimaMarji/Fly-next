@@ -1,0 +1,84 @@
+@import "../../../Styles/Helpers/mixins";
+
+.about-us-header-container {
+  padding-top: 80px;
+  padding-bottom: 196px;
+  background-color: #F6F6F7;
+
+  @include fullWidthSection;
+
+  .about-us-header {
+
+    max-width: 1200px;
+    margin: auto;
+
+    .about-us-text {
+      text-align: left;
+      width: 589px;
+      white-space: break-spaces;
+      display: grid;
+      gap: 24px;
+
+      .ant-typography:not(.about-us-title) {
+        line-height: 160% !important;
+      }
+    }
+  }
+
+  .ant-col:has(.about-us-header-image) {
+    display: flex;
+
+    .about-us-header-image {
+      margin-left: auto;
+    }
+  }
+
+  .about-us-title {
+    line-height: 140% !important;
+  }
+}
+
+
+@media screen and (max-width: 1190px) and (min-width: 993px) {
+  .about-us-title {
+    font-size: 24px !important;
+  }
+  .about-us-header-image {
+    width: 300px;
+    object-fit: cover;
+  }
+  .about-us-text {
+    width: 100% !important;
+
+    .ant-typography:not(.about-us-title) {
+      font-size: 14px !important;
+    }
+  }
+}
+
+@include media-query(tablet-and-mobile) {
+  .about-us-header-container {
+    padding: 24px 10%;
+    //margin-left: -12.5%;
+    //width: 100vw;
+
+    .about-us-header {
+      justify-content: center;
+
+      .about-us-text {
+        text-align: center;
+        white-space: unset;
+        width: 100%;
+      }
+
+      .ant-col:has(.about-us-header-image) {
+        display: flex;
+
+        .about-us-header-image {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+}

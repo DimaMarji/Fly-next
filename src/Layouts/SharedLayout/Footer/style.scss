@@ -1,0 +1,361 @@
+@import "../../../Styles/Variables/fonts.module";
+@import "../../../Styles/Variables/colors.module";
+@import "../../../Styles/Variables/colors";
+@import "../../../Styles/Helpers/mixins";
+
+// start zcoderz website footer style
+
+.zcoderz-website-footer.ant-layout-footer {
+  display: grid;
+  background: $app-footer-primary-background-color;
+  height: auto;
+  white-space: nowrap;
+  padding: 0 !important;
+
+  .zcoderz-website-footer-content {
+    max-width: 1200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .all-information-div {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "logo logo . office office  . services services . about about";
+    column-gap: 1.38%;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .about-div {
+    width: fit-content;
+  }
+
+
+  .company-logo-button {
+    grid-area: logo;
+    width: fit-content;
+    height: fit-content;
+    z-index: 2;
+    padding: 0 !important;
+
+  }
+
+  .our-services-div {
+    grid-area: services;
+    text-align: left;
+
+    .our-services-list {
+      display: grid;
+      gap: 16px;
+    }
+  }
+
+  .company-logo-image.ant-image-img {
+    grid-area: logo;
+    max-width: 206px;
+    min-width: 162px;
+  }
+
+  .our-office-div {
+    white-space: nowrap;
+    grid-area: office;
+    text-align: start;
+
+    .our-offices {
+      display: grid;
+      gap: 48px;
+    }
+
+    .perth-australia-div {
+      white-space: nowrap;
+      grid-area: office;
+      text-align: start;
+      display: grid;
+
+      > * {
+        width: fit-content !important;
+      }
+    }
+  }
+
+  // end our office div style
+  .title-text.ant-typography {
+    margin-bottom: 21px;
+    cursor: default;
+  }
+
+  // start about div style
+
+  .about-div {
+    grid-area: about;
+    text-align: start;
+
+    .info-div {
+      display: grid;
+    }
+
+    .info-div > *,
+    .info-div .ant-typography.text-regular-24 {
+      width: fit-content !important;
+      padding-bottom: 15px !important;
+    }
+
+    .explore-text.ant-typography {
+      line-height: 1.4;
+    }
+
+    .home-text.ant-typography {
+      margin-top: 15px !important;
+    }
+
+    .footer-icons-div {
+      grid-area: about;
+      display: grid;
+      margin-top: 20px;
+      gap: 16px;
+
+    }
+
+  }
+
+  // end about div style
+  .footer-link:hover,
+  .footer-link:focus, .social-button:hover .footer-link, .footer-link-selected {
+    color: $light-blue-font-color !important;
+    cursor: pointer;
+  }
+
+
+  .address-text {
+    cursor: default;
+    margin-bottom: 12px !important;
+  }
+
+  .info-details {
+    display: grid;
+    gap: 8px;
+  }
+
+  .social-button > span {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .all-information-div .about-div .footer-icons-div > * {
+    min-width: fit-content;
+    padding: 0;
+    line-height: 0;
+  }
+
+  // start divider style
+  .divider-div {
+    display: grid;
+    grid-template-columns: repeat(12, calc(100% / 12));
+    grid-template-rows: 1fr;
+    grid-template-areas: "divider divider divider divider divider divider divider divider divider divider divider divider";
+    padding: 0;
+    margin: 0;
+
+    .zcoderz-footer-divider.ant-divider {
+      background-color: $gray-footer-font-color-30;
+      height: fit-content;
+      grid-area: divider;
+      margin: 0;
+    }
+  }
+
+  // end divider style
+
+  // start copyright div style
+
+  .copyright-div {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "copyright copyright . . . . . . . . . .";
+    max-width: 1200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    column-gap: 1.38%;
+
+    .copyright-span {
+      display: flex;
+      grid-area: copyright;
+      align-items: baseline;
+    }
+
+    .copyright-span .copyright-image {
+      min-width: 15px;
+    }
+
+    .copyright-span .copyright-text.ant-typography {
+      text-align: start;
+      height: fit-content;
+      padding: 24px 0 24px 0 !important;
+    }
+  }
+
+  // end copyright div style
+}
+
+
+@include media-query(laptop) {
+  .zcoderz-website-footer.ant-layout-footer {
+    .zcoderz-website-footer-content {
+      margin-left: 8% !important;
+      margin-right: 8% !important;
+    }
+  }
+}
+
+
+// start media query for medium screens style
+
+@include media-query(tablet) {
+  .zcoderz-website-footer.ant-layout-footer .zcoderz-website-footer-content {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+  }
+  .zcoderz-website-footer.ant-layout-footer {
+    .all-information-div {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+      "logo logo  . . . . "
+      "office office services services about about ";
+      padding-top: 40px;
+      padding-bottom: 32px;
+
+
+      .company-logo-image.ant-image-img {
+        width: auto !important;
+        height: 48px;
+      }
+
+      .our-office-div .perth-australia-div {
+        padding-top: 48px;
+      }
+
+      .our-office-div .perth-australia-div .address-text.ant-typography {
+        line-height: 1.4;
+      }
+
+      .about-div {
+        padding-top: 48px;
+
+        .info-div > *,
+        .info-div .ant-typography.text-regular-24 {
+          padding-bottom: 12px !important;
+        }
+      }
+    }
+
+    .divider-div {
+      grid-template-columns: repeat(6, calc(100% / 6));
+      grid-template-areas: "divider divider divider divider divider divider";
+      padding: 0 47px;
+    }
+
+    .copyright-div {
+      grid-template-columns: repeat(2, calc(98.62% / 2));
+      grid-template-areas: "copyright copyright";
+
+      .copyright-span {
+        justify-content: center;
+      }
+    }
+
+    .our-services-div {
+      padding-top: 48px;
+    }
+
+  }
+  .our-offices {
+    gap: 24px !important;
+  }
+}
+
+// end media query for medium screens style
+
+// start media query for small screens style
+
+@include media-query(mobile) {
+
+  .zcoderz-website-footer.ant-layout-footer {
+    min-width: 270px;
+
+    .zcoderz-website-footer-content {
+      margin-left: 6% !important;
+      margin-right: 6% !important;
+    }
+
+    .all-information-div {
+      grid-template-columns: repeat(2, calc(98.62% / 2));
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+      "logo ."
+       "office office"
+      "services services"
+      "about about";
+      padding-top: 40px;
+      padding-bottom: 32px;
+    }
+
+    .company-logo-image {
+      width: 162px !important;
+      height: 48px !important;
+    }
+
+    .our-office-div .perth-australia-div, .our-services-div, .about-div {
+      padding-top: 32px;
+    }
+
+    .our-office-div .perth-australia-div .title-text.ant-typography {
+      margin-bottom: 16px !important;
+    }
+
+
+    .about-div {
+      .footer-icons-div {
+        margin-top: 16px;
+      }
+
+      .footer-icons-div > * {
+        margin-right: 24px;
+      }
+
+      .home-text.ant-typography {
+        margin-top: 12px !important;
+      }
+
+      div .info-div > *,
+      .info-div .ant-typography.text-regular-24 {
+        padding-bottom: 12px !important;
+      }
+    }
+
+    .divider-div {
+      grid-template-columns: repeat(2, calc(100% / 2));
+      grid-template-areas: "divider divider";
+      padding: 0;
+    }
+
+    .copyright-div {
+      grid-template-columns: repeat(2, calc(98.62% / 2));
+      grid-template-areas: "copyright copyright";
+
+      .copyright-span {
+        justify-content: center;
+      }
+    }
+
+    .our-offices {
+      gap: 24px !important;
+    }
+  }
+}
+
+// end media query for small screens style

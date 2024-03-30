@@ -23,7 +23,7 @@ const flyItems=[
       label: (
         <Text>ذهاب وعودة</Text>
     ),
-      children: "Content of Tab Pane 2",
+      children: <AddTravel/>,
     }, {
         key: "3",
         label: (
@@ -32,6 +32,8 @@ const flyItems=[
         children: "Content of Tab Pane 2",
       },
   ];
+
+
   const items: TabsProps["items"] = [
     {
       key: "1",
@@ -74,7 +76,7 @@ const flyItems=[
           onChange={onChange}
         />
       </Col>
-      <Col md={14} lg={14}></Col>
+      <Col md={14} lg={14}/>
     </Row>
   );
 };
