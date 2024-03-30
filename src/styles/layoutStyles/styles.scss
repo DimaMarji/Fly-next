@@ -1,0 +1,53 @@
+.fly-akeed-navbar {
+  background-color: #1a1f71;
+  border: 0;
+  z-index: 4;
+  margin-bottom: 0;
+  border-radius: 0;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  .logo {
+    width: 170px;
+    height: auto;
+  }
+
+  .lang-select {
+    .ant-select-selector {
+      // padding: 10px 15px;
+      border-radius: 25px;
+      background: transparent;
+      border-color: #1a1f71;
+      .ant-typography{
+        color: #fff !important;
+      }
+
+      &:hover {
+        background: #196dfb;
+      
+      }
+     
+    }
+    .ant-select-arrow svg{
+        color: #fff !important;
+        font-size: 8px;
+      }
+  }
+  .buttons-div{
+    gap: 10% !important;
+  }
+  .lang-button{
+    background-color: transparent;
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    &:hover{
+        background-color: #196dfb;
+    }
+  }
+}

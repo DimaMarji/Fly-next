@@ -1,0 +1,106 @@
+.reserve-section {
+  background-color: #e6f0ff;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  width: 100%;
+
+  .reserve-tabs {
+    width: 100%;
+
+    .ant-tabs-nav-list {
+      border-radius: 50px;
+      background-color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+      gap: 15px;
+
+      .ant-tabs-tab {
+        flex-grow: 1;
+        justify-content: center;
+        border: none;
+        background-color: #fff;
+        border-radius: 50px;
+
+        .plane-icon {
+          filter: brightness(0.5);
+        }
+      }
+
+      .ant-tabs-tab-active {
+        .plane-icon {
+          filter: invert(99%) sepia(1%) saturate(223%) hue-rotate(149deg)
+            brightness(119%) contrast(100%);
+        }
+        background-color: #196dfb;
+        * {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .button-full-width {
+    width: 100% !important;
+    margin-top: 10px;
+  }
+}
+
+.travel-select {
+  padding: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .ant-select-selector {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .label {
+    .ant-typography {
+      color: #ff56a1;
+    }
+    img {
+      filter: invert(50%) sepia(20%) saturate(1781%) hue-rotate(284deg)
+        brightness(99%) contrast(104%);
+    }
+  }
+}
+
+.day-picker {
+  background-color: #fff;
+  padding: 12px;
+}
+.date-card {
+  background-color: #fff;
+  width: 48%;
+  padding: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  .title {
+    color: #196dfb;
+  }
+  .month-year {
+    display: grid;
+    text-align: center;
+    margin-right: 12px;
+  }
+}
+.rdp-day_selected,
+.rdp-day_selected:focus-visible,
+.rdp-day_selected:hover {
+  background-color: #196dfb;
+}
+.flight-type-radio {
+  display: flex;
+  margin-top: 10px;
+  .ant-radio-button-wrapper {
+    flex-grow: 1;
+    text-align: center;
+  }
+  .ant-radio-button-wrapper-checked {
+    background-color: #196dfb !important;
+   
+  }
+}
