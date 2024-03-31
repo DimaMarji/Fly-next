@@ -1,79 +1,82 @@
-// @import "../../../Styles/Helpers/mixins";
 
-.about-us-header-container {
+.second-section-header-container {
   padding-top: 80px;
   padding-bottom: 196px;
-  background-color: #F6F6F7;
+  background-color: #FFF;
+  margin-left: -8%;
+  margin-right: -8%;
+text-align: right;
 
-
-  .about-us-header {
+  .second-section-header {
 
     max-width: 1200px;
     margin: auto;
 
-    .about-us-text {
+    .second-section-text {
       text-align: left;
       width: 589px;
       white-space: break-spaces;
       display: grid;
       gap: 24px;
 
-      .ant-typography:not(.about-us-title) {
+      .ant-typography:not(.second-section-title) {
         line-height: 160% !important;
       }
     }
   }
 
-  .ant-col:has(.about-us-header-image) {
+  .ant-col:has(.second-section-header-image) {
     display: flex;
 
-    .about-us-header-image {
-      margin-left: auto;
+    .second-section-header-image {
+      margin: auto;
     }
   }
 
-  .about-us-title {
+  .second-section-title {
     line-height: 140% !important;
+    font-size: 36px !important;
+    margin-bottom: 0 !important;
   }
 }
 
 
 @media screen and (max-width: 1190px) and (min-width: 993px) {
-  .about-us-title {
+  .second-section-title {
     font-size: 24px !important;
   }
-  .about-us-header-image {
+  .second-section-header-image {
     width: 300px;
     object-fit: cover;
   }
-  .about-us-text {
+  .second-section-text {
     width: 100% !important;
 
-    .ant-typography:not(.about-us-title) {
+    .ant-typography:not(.second-section-title) {
       font-size: 14px !important;
     }
   }
 }
 
 @media screen and (max-width: 993px) {
-  .about-us-header-container {
+  .second-section-header-container {
     padding: 24px 10%;
     //margin-left: -12.5%;
     //width: 100vw;
 
-    .about-us-header {
+    .second-section-header {
       justify-content: center;
 
-      .about-us-text {
+      .second-section-text {
         text-align: center;
         white-space: unset;
         width: 100%;
       }
 
-      .ant-col:has(.about-us-header-image) {
+      .ant-col:has(.second-section-header-image) {
         display: flex;
 
-        .about-us-header-image {
+        .second-section-header-image {
           margin: auto;
         }
       }

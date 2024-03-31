@@ -8,7 +8,7 @@ const {Text, Title}=Typography
 const SecondSection: React.FC = () => {
     const {isMobileOrTablet} = useAppMediaQuery()
 
-    const secondSectionTitle = <Title  className={"about-us-title"}
+    const secondSectionTitle = <Title  className={"second-section-title"}
                                
                                 level={1}>
         {secondSectionData?.title}
@@ -17,12 +17,12 @@ const SecondSection: React.FC = () => {
     const secondSectionDescription = <Text>
         {secondSectionData?.description}
     </Text>
-    const secondSectionImage = <Image className={"about-us-header-image"} src={secondSectionData.image} alt={"about-us"}/>
+    const secondSectionImage = <Image width={500} className={"second-section-header-image"} src={secondSectionData.image} alt={"mobile"}/>
 
-    return <div className={"about-us-header-container"}>
-        <Row className={"about-us-header"}>
+    return <div className={"second-section-header-container"}>
+        <Row className={"second-section-header"}>
             <Col lg={12} sm={24} xs={24}>
-                <div className={"about-us-text"}>
+                <div className={"second-section-text"}>
                     {secondSectionTitle}
                     {!isMobileOrTablet && secondSectionDescription}
                 </div>

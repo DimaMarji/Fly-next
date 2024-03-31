@@ -1,3 +1,5 @@
+@import "counterStyles";
+
 .reserve-section {
   background-color: #e6f0ff;
   padding-top: 32px;
@@ -102,5 +104,15 @@
   .ant-radio-button-wrapper-checked {
     background-color: #196dfb !important;
    
+  }
+}
+
+.guests-container{
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  margin-top: 10px;
+  >div{
+    flex-grow: 1;
   }
 }
