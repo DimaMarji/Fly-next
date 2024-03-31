@@ -1,13 +1,7 @@
-@import "../../../Styles/Variables/fonts.module";
-@import "../../../Styles/Variables/colors.module";
-@import "../../../Styles/Variables/colors";
-@import "../../../Styles/Helpers/mixins";
 
-// start zcoderz website footer style
 
 .zcoderz-website-footer.ant-layout-footer {
   display: grid;
-  background: $app-footer-primary-background-color;
   height: auto;
   white-space: nowrap;
   padding: 0 !important;
@@ -123,7 +117,7 @@
   // end about div style
   .footer-link:hover,
   .footer-link:focus, .social-button:hover .footer-link, .footer-link-selected {
-    color: $light-blue-font-color !important;
+    color: #0f1ae6 !important;
     cursor: pointer;
   }
 
@@ -160,7 +154,6 @@
     margin: 0;
 
     .zcoderz-footer-divider.ant-divider {
-      background-color: $gray-footer-font-color-30;
       height: fit-content;
       grid-area: divider;
       margin: 0;
@@ -202,19 +195,12 @@
 }
 
 
-@include media-query(laptop) {
-  .zcoderz-website-footer.ant-layout-footer {
-    .zcoderz-website-footer-content {
-      margin-left: 8% !important;
-      margin-right: 8% !important;
-    }
-  }
-}
+
 
 
 // start media query for medium screens style
 
-@include media-query(tablet) {
+@media screen and (max-width: 993px) and (min-width:576px) {
   .zcoderz-website-footer.ant-layout-footer .zcoderz-website-footer-content {
     margin-left: 10% !important;
     margin-right: 10% !important;
@@ -282,7 +268,7 @@
 
 // start media query for small screens style
 
-@include media-query(mobile) {
+@media screen and (max-width: 576px) {
 
   .zcoderz-website-footer.ant-layout-footer {
     min-width: 270px;
@@ -357,5 +343,3 @@
     }
   }
 }
-
-// end media query for small screens style

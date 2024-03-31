@@ -1,7 +1,7 @@
-import AboutUSImage from "../../../public/Assets/Images/AboutUs/about-us-header.png"
+import PhoneImage from "../../../../public/phone.webp"
 
-export const secondSectionData = {
-    title: "By Your Side For More Than \n16 Years of Business \nExperience",
-    description: "The critical relevance of software development and product design services for business societies and entrepreneurs has been expanding for nearly 2 decades, and this is where zcoderz started out!",
-    image: AboutUSImage
+export const secondSectionData:any = {
+    title: "التجربة السلسة لسفر الشركات",
+    description: "فلاي أكيد هو حل سفر متكامل للشركات يقدم منتجات سفر للشركات وموظفيها ليجمع ما بين أفضل تجارب الحجوزات للموظفين وأفضل تجربة لإدارة حلول السفر بالكامل.",
+    image: PhoneImage
 }

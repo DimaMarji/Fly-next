@@ -1,22 +1,19 @@
 import React from 'react';
-import "./style.scss"
-import ZcoderzLogo from "../../../public/Assets/Images/Logo/light-zcoderz-logo.svg";
+import LogoImage from "../../../../public/Logo-Dark.webp";
 import Image from 'next/image'
-import {Button, Divider, Footer, Typography} from "antd";
-import {mailZcoderz, telZcoderz} from "../../../Constants";
+import {Button, Divider,Layout, Typography} from "antd";
 import {useRouter} from 'next/router';
-import {socialMediaData} from "../NavBar/constant";
-import ZcoderzDarkLogo from "../../../public/Assets/Images/Logo/dark-zcoderz-logo.svg";
 import {pagesFooterItemsData} from "./constant";
 
 const {Text, Title} =Typography
+const {Footer} = Layout
 
 const SharedFooter = () => {
     //TODO from api
     const contactInfo = [{
         office: "Perth - Australia",
-        email: mailZcoderz,
-        phone: telZcoderz
+        email: "mailZcoderz",
+        phone: "telZcoderz"
     }
     ]
 
@@ -48,29 +45,20 @@ const SharedFooter = () => {
                             <div className={"perth-australia-div"}>
                                 <Title  className={"title-text"}
                                        level={3}>
-                                    Our Offices
+                                    فلاي أكيد
                                 </Title>
                                 <div className={"our-offices"}>
-                                    {contactInfo?.map((item, index) => {
-                                        return <div key={index}>
-                                            <Title
-                                                level={4}
-
-                                                className={"address-text"}
-                                            >
-                                                {item?.office}
-                                            </Title>
+                                   <div>
+                                            <Text
+                                                     className={"footer-link"}>
+                                              من نحن
+                                            </Text>
                                             <div className={"info-details"}>
                                                 <Text
-                                                    onClick={() => handleRedirect(`tel:${item?.phone}`)}
-                                                    className={"footer-link"}
-                                                >{item?.phone}</Text>
-                                                <Text
-                                                      onClick={() => handleRedirect(`mailto:${item?.email}`)}
-                                                      className={"footer-link"}>{item?.email}</Text>
-                                            </div>
+                                                     className={"footer-link"}>فلاي أكيد أعمال</Text>
+                                                     </div>
                                         </div>
-                                    })}
+                                   
                                 </div>
                             </div>
                         </div>
@@ -105,19 +93,7 @@ const SharedFooter = () => {
                             </Title>
 
                             <div className={"footer-icons-div"}>
-                                {socialMediaData.map((item, index) => (
-                                    <Button type={"link"}
-                                            key={index}
-                                            className={"social-button"}
-                                            target={"_blank"}
-                                            href={item?.link}>
-                                        <Image alt={"facebook-icon"} src={item?.icon}/>
-                                        <Text className={"footer-link"}>
-                                            {item?.platform}
-                                        </Text>
-
-                                    </Button>
-                                ))}
+                               
                             </div>
                         </div>
 
@@ -130,8 +106,7 @@ const SharedFooter = () => {
                         <Text
                               className={"copyright-text"}
                         >
-                            Fly@{currentYear} | All rights reserved
-                        </Text>
+                            جميع الحقوق محفوظة لموقع وتطبيق فلاي أكيد @{currentYear}    </Text>
                     </span>
                     </div>
                 </div>

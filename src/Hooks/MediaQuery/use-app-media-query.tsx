@@ -19,7 +19,7 @@ export const useAppMediaQuery = () => {
     const isTablet = useMediaQuery({minWidth: tabletMinWidth, maxWidth: tabletMaxWidth})
 
     //is Tablet or Mobile
-    const isTabletOrMobile = useMediaQuery({maxWidth: tabletMaxWidth})
+    const isMobileOrTablet = useMediaQuery({maxWidth: tabletMaxWidth})
 
 
     //is Desktop 
@@ -31,7 +31,7 @@ export const useAppMediaQuery = () => {
     //  is Large Desktop
     const isLargeDesktop = useMediaQuery({minWidth: largeDesktopMinWidth})
 
-    return {isMobile, isDesktop,isTabletOrMobile, isTablet, isNotMobile, isLargeDesktop};
+    return {isMobile, isDesktop,isMobileOrTablet, isTablet, isNotMobile, isLargeDesktop};
 };
 
 
