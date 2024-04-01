@@ -4,13 +4,12 @@ import Image from "next/image";
 import LandingIcon from "../../../../../public/landing.png";
 import FlightIcon from "../../../../../public/flight.png";
 import "moment/locale/ar";
-import CalendarDropdown from "./CalendarDropdown/calendarDropdownContainer";
 import { useCreate } from "@/ReactQuery/CreateQuery";
 import { useGetAll } from "@/ReactQuery/GetQuery";
-import moment from "moment";
+import CalendarDropdown from "../AddTravel/CalendarDropdown/calendarDropdownContainer";
 
 const { Text, Title } = Typography;
-const AddTravel: React.FC = () => {
+const AddHotel: React.FC = () => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState<string>();
@@ -23,44 +22,22 @@ const AddTravel: React.FC = () => {
   const [flightDestination, setFlightDestination] = useState<any>();
 
   const { mutate, isError } = useCreate(
-    "shopping/availability/flight-availabilities"
+    "shopping/flight-destinations"
   );
   const handleReserve = () => {
-    mutate({
-      "originDestinations": [
-        {
-          ...flightLocation,
-          ...flightDestination,
-          "departureDateTime": {
-            "date": moment(flightDate).format("YYYY-MM-DD"),
-            "time": moment(flightDate).format("hh:mm:ss"),
-          }
-        }
-      ],
-      "travelers": [
-        {
-          "id": "1",
-          "travelerType": "ADULT"
-        }
-      ],
-      "sources": [
-        "GDS"
-      ]
-    });
+    mutate({});
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
-    `reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
+    `reference-data/locations/hotel?keyword=${searchValue}&subType=HOTEL_LEISURE`,
     { enabled: !!searchValue }
   );
 
+  const handleAirportSearch = () => {
+    console.log(data);
+  };
 
-
-  const travelOptions = [
-    { label: "السياحية", value: "h" },
-    { label: "الأعمال", value: "hs" },
-    { label: "الأولى", value: "hd" },
-  ];
+ 
 
   useEffect(() => {
     const newOptions = data?.data?.map((item: any) => {
@@ -91,53 +68,22 @@ const AddTravel: React.FC = () => {
             alt="airplane"
           />
 
-          <Text>من</Text>
+          <Text>الفندق أو المدينة</Text>
         </Space>
 
         <AutoComplete
           options={options}
-          notFoundContent={isLoading ? <Spin /> : 'لا يوجد نتائج'}
+          notFoundContent={isLoading ? <Spin /> : 'No matches'}
           placeholder="المدينة أو المطار"
           onSearch={(text: string) => {
             setSearchValue(text);
           }}
           onSelect={(value) => {
-            console.log(value,data?.data,data?.data?.find((item:any)=>item?.id==value))
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
-
-            setFlightLocation( {
-              "id": 1,
-              "originLocationCode": selectedItem?.iataCode,
-              // "destinationLocationCode": "MAD",
-             
-            });
+            setFlightLocation(value);
           }}
         />
       </div>
-      <div className="travel-select">
-        <Space className="label">
-          <Image
-            className="plane-icon"
-            width={16}
-            src={LandingIcon}
-            alt="airplane"
-          />
-          <Text>إلى</Text>
-        </Space>
-        <AutoComplete
-          options={options}
-          style={{ width: "100%"}}
-          placeholder="المدينة أو المطار"
-          onSearch={(text: string) => {}}
-          onSelect={(value) => {
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
-
-            setFlightDestination( {
-              "destinationLocationCode": selectedItem?.iataCode,
-            });
-          }}
-        />
-      </div>
+     
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <CalendarDropdown
           type={"flight"}
@@ -153,26 +99,15 @@ const AddTravel: React.FC = () => {
         />
       </div>
 
-      <Radio.Group
-        className="flight-type-radio"
-        options={travelOptions}
-        onChange={(event) => {
-          console.log(event);
-          setTravelType(event?.target?.value);
-        }}
-        value={travelType}
-        optionType="button"
-        buttonStyle="solid"
-      />
       <Button
         className="button-full-width"
         type="primary"
         onClick={handleReserve}
       >
-        ابحث عن رحلة
+        ابحث عن فنادق
       </Button>
     </div>
   );
 };
 
-export default AddTravel;
+export default AddHotel;

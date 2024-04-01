@@ -3,10 +3,13 @@ import Image from "next/image";
 import PlaneIcon from "../../../../public/plane.png";
 import HotelIcon from "../../../../public/hotel.png";
 import AddTravel from "./AddTravel/addTravelContainer";
+import { useAppMediaQuery } from "@/Hooks/MediaQuery/use-app-media-query";
+import AddHotel from "./AddHotel/addHotelContainer";
 
 const { Text } = Typography;
 
 const ReserveSection: React.FC = () => {
+  const {isMobileOrTablet} =useAppMediaQuery()
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -60,13 +63,13 @@ const flyItems=[
       <Text>فنادق</Text>
       <Image className="plane-icon" width={16} src={HotelIcon} alt="airplane" />
     </Space>,
-      children: "Content of Tab Pane 2",
+      children:<AddHotel/>,
     },
   ];
 
   return (
     <Row className="reserve-section">
-      <Col md={10} lg={10}>
+      <Col md={12} lg={10} sm={24} xs={24}>
         <Tabs
           className="reserve-tabs"
           type="card"
@@ -76,7 +79,7 @@ const flyItems=[
           onChange={onChange}
         />
       </Col>
-      <Col md={14} lg={14}/>
+      <Col md={12} lg={14} sm={0} xs={0}/>
     </Row>
   );
 };
