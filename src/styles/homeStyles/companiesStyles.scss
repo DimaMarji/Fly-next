@@ -1,0 +1,25 @@
+.companies-section{
+  background-color: #FFFFFF;
+  text-align: center;
+  margin-left: -8%;
+  margin-right: -8%;
+  padding-top: 56px;
+  padding-bottom: 56px;
+.ant-typography{
+  font-size: 36px;
+}
+
+  .log-div{
+    width: 200px;
+    img{
+      width:auto;
+      height: 110px;
+      margin: auto;
+    }
+  }
+
+  .logos-list{
+    display: flex;
+    justify-content: center;
+  }
+}

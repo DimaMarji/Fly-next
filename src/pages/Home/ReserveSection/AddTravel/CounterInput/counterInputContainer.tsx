@@ -1,7 +1,6 @@
 import React from "react";
-import {Space, Typography} from "antd"
-import {ArrowDownOutlined, ArrowUpOutlined} from "@ant-design/icons";
-import {Button} from "react-day-picker";
+import {Button, Space, Typography} from "antd"
+import {DownOutlined, UpOutlined} from "@ant-design/icons";
 
 const {Title, Text} = Typography
 const CounterInput: React.FC<any> = ({label, value, setValue}) => {
@@ -18,10 +17,10 @@ const CounterInput: React.FC<any> = ({label, value, setValue}) => {
         </Space>
         <Space direction={"vertical"}>
             <Button type={"link"} disabled={value >= 50}>
-                <ArrowUpOutlined onClick={() => handleCount("+")}/>
+                <UpOutlined onClick={() => handleCount("+")}/>
             </Button>
-            <Button type={"link"}  disabled={value <= 0}>
-                <ArrowDownOutlined onClick={() => handleCount("-")}/>
+            <Button type={"link"} disabled={value <= 0}>
+                <DownOutlined onClick={() => handleCount("-")}/>
             </Button>
         </Space>
     </div>

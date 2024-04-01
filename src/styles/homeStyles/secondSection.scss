@@ -1,22 +1,24 @@
 
 .second-section-header-container {
-  padding-top: 80px;
-  padding-bottom: 196px;
+  padding-top:40px;
+  padding-bottom: 40px;
   background-color: #FFF;
   margin-left: -8%;
   margin-right: -8%;
 text-align: right;
 
   .second-section-header {
-
+    align-items: center;
     max-width: 1200px;
+    padding-inline:42px;
     margin: auto;
 
     .second-section-text {
-      text-align: left;
+      text-align: right;
       width: 589px;
       white-space: break-spaces;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
 
       .ant-typography:not(.second-section-title) {
@@ -29,7 +31,7 @@ text-align: right;
     display: flex;
 
     .second-section-header-image {
-      margin: auto;
+      margin-right: auto;
     }
   }
 
