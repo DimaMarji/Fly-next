@@ -1,12 +1,12 @@
 
 
-.zcoderz-website-footer.ant-layout-footer {
+.fly-website-footer.ant-layout-footer {
   display: grid;
   height: auto;
   white-space: nowrap;
   padding: 0 !important;
 
-  .zcoderz-website-footer-content {
+  .fly-website-footer-content {
     max-width: 1200px;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr;
-    grid-template-areas: "logo logo . office office  . services services . about about";
+    grid-template-areas: "logo logo . office office  . law law services services . about about";
     column-gap: 1.38%;
     padding-top: 48px;
     padding-bottom: 48px;
@@ -44,6 +44,9 @@
       display: grid;
       gap: 16px;
     }
+  }
+  .our-law-div{
+    grid-area: law;
   }
 
   .company-logo-image.ant-image-img {
@@ -153,7 +156,7 @@
     padding: 0;
     margin: 0;
 
-    .zcoderz-footer-divider.ant-divider {
+    .fly-footer-divider.ant-divider {
       height: fit-content;
       grid-area: divider;
       margin: 0;
@@ -201,17 +204,17 @@
 // start media query for medium screens style
 
 @media screen and (max-width: 993px) and (min-width:576px) {
-  .zcoderz-website-footer.ant-layout-footer .zcoderz-website-footer-content {
+  .fly-website-footer.ant-layout-footer .fly-website-footer-content {
     margin-left: 10% !important;
     margin-right: 10% !important;
   }
-  .zcoderz-website-footer.ant-layout-footer {
+  .fly-website-footer.ant-layout-footer {
     .all-information-div {
       grid-template-columns: auto;
       grid-template-rows: auto auto;
       grid-template-areas:
-      "logo logo  . . . . "
-      "office office services services about about ";
+      "logo logo  . . . . . ."
+      "office office services services law law about about ";
       padding-top: 40px;
       padding-bottom: 32px;
 
@@ -270,10 +273,10 @@
 
 @media screen and (max-width: 576px) {
 
-  .zcoderz-website-footer.ant-layout-footer {
+  .fly-website-footer.ant-layout-footer {
     min-width: 270px;
 
-    .zcoderz-website-footer-content {
+    .fly-website-footer-content {
       margin-left: 6% !important;
       margin-right: 6% !important;
     }
@@ -285,6 +288,8 @@
       "logo ."
        "office office"
       "services services"
+      "law law"
+     
       "about about";
       padding-top: 40px;
       padding-bottom: 32px;

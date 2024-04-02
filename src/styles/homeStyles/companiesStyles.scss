@@ -2,15 +2,18 @@
   background-color: #FFFFFF;
   text-align: center;
   margin-left: -8%;
+  display: flex;
   margin-right: -8%;
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  flex-direction: column;
+  gap: 16px;
 .ant-typography{
   font-size: 36px;
 }
 
   .log-div{
-    width: 200px;
+    // width: 200px;
     img{
       width:auto;
       height: 110px;
