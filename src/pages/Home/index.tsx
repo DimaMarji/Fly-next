@@ -6,6 +6,7 @@ import {useMutation} from "react-query";
 import useTokens from "@/Hooks/Auth/useToken";
 import CompaniesSection from "./CompaniesSection/companiesSectionContainer";
 import UsersFeedbackSection from "./UsersFeedbackSection/usersFeedbackSection";
+import BookFlightsSection from "./BookFlightsSection/bookFlightsSection";
 
 // import "./styles.scss"
 const Home: React.FC = () => {
@@ -38,6 +39,7 @@ const Home: React.FC = () => {
         <SecondSection/>
         <CompaniesSection/>
         <UsersFeedbackSection/>
+        <BookFlightsSection/>
     </div>
 };
 export default Home;

@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Radio, Space, Spin, Typography } from "antd";
+import { AutoComplete, Button, Radio, Space, Spin, Typography,message } from "antd";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import LandingIcon from "../../../../../public/landing.png";
@@ -31,11 +31,37 @@ const AddTravel: React.FC = () => {
 
   const { mutate, isError } = useCreate(
     "shopping/availability/flight-availabilities"
-  );
+ ,{onError:(error)=>{
+              message.success(`${error}`);
+          }} );
 
-  const getTravelers=()=>{
+    const getTravelers = () => {
+        const travelers = [];
 
-  }
+        for (let i = 0; i < adults; i++) {
+            travelers.push({
+                id: (i + 1).toString(),
+                travelerType: 'ADULT'
+            });
+        }
+
+        for (let i = 0; i < babies; i++) {
+            travelers.push({
+                id: (i + 1).toString(),
+                travelerType: 'BABY'
+            });
+        }
+
+        for (let i = 0; i < children; i++) {
+            travelers.push({
+                id: (i + 1).toString(),
+                travelerType: 'CHILD'
+            });
+        }
+
+        return travelers;
+    };
+
   const handleReserve = () => {
     mutate({
       "originDestinations": [
@@ -48,12 +74,7 @@ const AddTravel: React.FC = () => {
           }
         }
       ],
-      "travelers": [
-        {
-          "id": "1",
-          "travelerType": "ADULT"
-        }
-      ],
+      "travelers": getTravelers(),
       "sources": [
         "GDS"
       ]
@@ -126,7 +147,6 @@ const AddTravel: React.FC = () => {
             setSearchValue(text);
           }}
           onSelect={(value) => {
-            console.log(value,data?.data,data?.data?.find((item:any)=>item?.id==value))
             const selectedItem=data?.data?.find((item:any)=>item?.id==value)
 
             setFlightLocation( {

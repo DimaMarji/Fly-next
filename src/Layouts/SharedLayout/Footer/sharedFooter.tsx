@@ -1,15 +1,17 @@
 import React from 'react';
-import LogoImage from "../../../../public/Logo-Dark.webp";
+import LogoImage from "../../../../public/logo.webp";
+import PaymentImage from "../../../../public/paymentMethods.webp";
 import Image from 'next/image'
-import {Button, Divider,Layout, Typography} from "antd";
-import {useRouter} from 'next/router';
-import {pagesFooterItemsData} from "./constant";
+import {Button, Divider, Layout, Space, Typography} from "antd";
+import googlePlayImage from "../../../../public/google_play.webp";
+import appleStoreImage from "../../../../public/apple_store.webp";
 
-const {Text, Title} =Typography
+const {Text} = Typography
 const {Footer} = Layout
 
+
 const SharedFooter = () => {
-  
+
 
     const currentYear = new Date().getFullYear()
 
@@ -19,85 +21,92 @@ const SharedFooter = () => {
             <Footer className={"fly-website-footer"}>
                 <div className={"fly-website-footer-content"}>
                     <div className={"all-information-div"}>
-                        <Button onClick={() => {
-                            push("/")
-                        }} className={"company-logo-button"} type={'link'} href={"/"} target={"_blank"}>
+                        <div>
+                            <Button className={"company-logo-button"} type={'link'} href={"/"} target={"_blank"}>
+                                <Image
+                                    width={140}
+                                    alt={"company-logo-image"} className={"company-logo-image"} src={LogoImage}
+
+                                />
+                            </Button>
                             <Image
-                                width={171}
-                                alt={"company-logo-image"} className={"company-logo-image"} src={LogoImage}
+                                width={180}
+                                alt={"company-logo-image"} style={{display: "block", marginTop: "24px"}}
+                                src={PaymentImage}
 
                             />
-                        </Button>
+                        </div>
                         <div className={"our-office-div"}>
                             <div className={"perth-australia-div"}>
-                                <Title  className={"title-text"}
-                                       level={3}>
+                                <Text className={"title-text"}
+                                      level={3}>
                                     فلاي أكيد
-                                </Title>
+                                </Text>
                                 <div className={"our-offices"}>
-                                   <div>
+                                    <div>
+                                        <Text
+                                            className={"footer-link"}>
+                                            من نحن
+                                        </Text>
+                                        <div className={"info-details"}>
                                             <Text
-                                                     className={"footer-link"}>
-                                              من نحن
-                                            </Text>
-                                            <div className={"info-details"}>
-                                                <Text
-                                                     className={"footer-link"}>فلاي أكيد أعمال</Text>
-                                                     </div>
+                                                className={"footer-link"}>فلاي أكيد أعمال</Text>
                                         </div>
-                                   
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <div className={"our-law-div"}>
                             <div className={"perth-australia-div"}>
-                                <Title  className={"title-text"}
-                                       level={3}>
+                                <Text className={"title-text"}
+                                      level={3}>
                                     الدعم
-                                </Title>
+                                </Text>
                                 <div className={"our-offices"}>
-                                   <div>
+                                    <div>
+                                        <Text
+                                            className={"footer-link"}>
+                                            تواصل معنا
+                                        </Text>
+                                        <div className={"info-details"}>
                                             <Text
-                                                     className={"footer-link"}>
-                                              تواصل معنا
-                                            </Text>
-                                            <div className={"info-details"}>
-                                                <Text
-                                                     className={"footer-link"}>الأسئلة الشائعة</Text>
-                                                     </div>
+                                                className={"footer-link"}>الأسئلة الشائعة</Text>
                                         </div>
-                                   
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <div className={"our-services-div"}>
-                            <Title  className={"title-text"}
-                                   level={3}
-                                >
+                            <Text className={"title-text"}
+                                  level={3}
+                            >
                                 الأمور القانونية
-                            </Title>
+                            </Text>
                             <div className={"our-services-list"}>
-                               <Text 
-                                                 className={`footer-link`}
-                                    >الشروط والأحكام
-                                    </Text>
-                                    <Text 
-                                                 className={`footer-link`}
-                                    >شروط الخصوصية 
-                                    </Text>
-                           
+                                <Text
+                                    className={`footer-link`}
+                                >الشروط والأحكام
+                                </Text>
+                                <Text
+                                    className={`footer-link`}
+                                >شروط الخصوصية
+                                </Text>
+
                             </div>
                         </div>
                         <div className={"about-div"}>
-                            <Title className={"title-text"}
-                                   level={3}
-                                 >
-                                Download
-                            </Title>
+                            <Text className={"title-text"}
+                                  level={3}
+                            >
+                                التحميل
+                            </Text>
 
-                            <div className={"footer-icons-div"}>
-                               
-                            </div>
+                            <Space direction={"vertical"}>
+                                <Image height={50} src={appleStoreImage} alt={"download"}/>
+                                <Image height={50} src={googlePlayImage} alt={"download"}/>
+                            </Space>
                         </div>
 
                     </div>
@@ -107,7 +116,7 @@ const SharedFooter = () => {
                     <div className={"copyright-div"}>
                     <span className={"copyright-span"}>
                         <Text
-                              className={"copyright-text"}
+                            className={"copyright-text"}
                         >
                             جميع الحقوق محفوظة لموقع وتطبيق فلاي أكيد @{currentYear}    </Text>
                     </span>

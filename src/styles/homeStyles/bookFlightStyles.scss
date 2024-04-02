@@ -1,0 +1,20 @@
+.book-flights-section{
+margin-top: 32px;
+  padding-top: 32px;
+  min-height: 435px;
+
+
+
+  .mobile-image{
+    max-width: 80vw;
+    position: absolute;
+    top: -250px;
+    left: 10%;
+  }
+
+  .book-flights-title{
+    color: #196dfb !important;
+    font-size: 32px !important;
+    margin-bottom: 16px !important;
+  }
+}

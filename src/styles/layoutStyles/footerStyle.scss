@@ -1,13 +1,18 @@
 
-
 .fly-website-footer.ant-layout-footer {
   display: grid;
   height: auto;
   white-space: nowrap;
   padding: 0 !important;
+  background-color: #FFFFFF;
+
+*{
+  font-size: 16px;
+}
+
 
   .fly-website-footer-content {
-    max-width: 1200px;
+    max-width: 1000px;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -16,7 +21,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr;
-    grid-template-areas: "logo logo . office office  . law law services services . about about";
+    grid-template-areas: ". logo logo  office office  law law services services  about about .";
     column-gap: 1.38%;
     padding-top: 48px;
     padding-bottom: 48px;
@@ -38,14 +43,14 @@
 
   .our-services-div {
     grid-area: services;
-    text-align: left;
+    text-align: right;
 
     .our-services-list {
       display: grid;
-      gap: 16px;
     }
   }
-  .our-law-div{
+
+  .our-law-div {
     grid-area: law;
   }
 
@@ -79,8 +84,9 @@
 
   // end our office div style
   .title-text.ant-typography {
-    margin-bottom: 21px;
+    margin-bottom: 12px;
     cursor: default;
+    display: block;
   }
 
   // start about div style
@@ -117,10 +123,15 @@
 
   }
 
+  .footer-link{
+    font-size: 14px !important;
+  }
+
   // end about div style
   .footer-link:hover,
   .footer-link:focus, .social-button:hover .footer-link, .footer-link-selected {
     color: #0f1ae6 !important;
+    text-decoration: underline;
     cursor: pointer;
   }
 
@@ -198,12 +209,9 @@
 }
 
 
-
-
-
 // start media query for medium screens style
 
-@media screen and (max-width: 993px) and (min-width:576px) {
+@media screen and (max-width: 993px) and (min-width: 576px) {
   .fly-website-footer.ant-layout-footer .fly-website-footer-content {
     margin-left: 10% !important;
     margin-right: 10% !important;
