@@ -69,7 +69,7 @@ const flyItems=[
 
   return (
     <Row className="reserve-section">
-      <Col md={12} lg={10} sm={24} xs={24}>
+      <Col md={13} lg={12} sm={24} xs={24}>
         <Tabs
           className="reserve-tabs"
           type="card"
@@ -79,7 +79,7 @@ const flyItems=[
           onChange={onChange}
         />
       </Col>
-      <Col md={12} lg={14} sm={0} xs={0}/>
+      <Col md={10} lg={12} sm={0} xs={0}/>
     </Row>
   );
 };

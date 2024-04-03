@@ -2,6 +2,7 @@
 margin-top: 32px;
   padding-top: 32px;
   min-height: 435px;
+  padding-inline: 8%;
 
 
 
@@ -17,4 +18,27 @@ margin-top: 32px;
     font-size: 32px !important;
     margin-bottom: 16px !important;
   }
+}
+
+@media screen and (max-width:996px)  {
+  .book-flights-section{
+    padding-inline: 4%;
+.ant-space{
+    flex-wrap: wrap;
+  justify-content: center;}
+  .mobile-image{
+    max-width: 30vw;
+    height: auto;
+    margin: auto;
+    display: block;
+    position: unset;
+    top: -250px;
+    left: 10%;
+  }
+  .book-flights-title{
+  
+    font-size: 20px !important;
+    margin-bottom: 16px !important;
+  }
+}
 }

@@ -9,6 +9,8 @@ import moment from "moment";
 import {CounterInput} from "./CounterInput";
 import {useCreate} from "../../../../ReactQuery/CreateQuery";
 import {useGetAll} from "../../../../ReactQuery/GetQuery";
+import { useRouter } from "next/router";
+import { useTravelContext } from "@/Context/travelContext";
 
 const { Text, Title } = Typography;
 const AddTravel: React.FC = () => {
@@ -16,69 +18,38 @@ const AddTravel: React.FC = () => {
 
   const [searchValue, setSearchValue] = useState<string>();
 
-  const [flightDate, setFlightDate] = useState<any>();
-  const [landingDate, setLandingDate] = useState<any>();
-  const [travelType, setTravelType] = useState<any>();
+  const {
+    flightLocation,
+    setFlightLocation,
+    flightDestination,
+    setFlightDestination,
+    flightDate,
+    setFlightDate,
+    landingDate,
+    setLandingDate,
+    travelType,
+    setTravelType,
+    adults,
+    setAdults,
+    babies,
+    setBabies,
+    childrens,
+    setChildrens,
+  } = useTravelContext();
 
-  const [flightLocation, setFlightLocation] = useState<any>();
-  const [flightDestination, setFlightDestination] = useState<any>();
-
-    const [adults, setAdults] = useState<number>(0);
- const [babies, setBabies] = useState<number>(0);
- const [children, setChildren] = useState<number>(0);
-
+ const {push} = useRouter()
 
 
   const { mutate, isError } = useCreate(
     "shopping/availability/flight-availabilities"
- ,{onError:(error)=>{
+ ,{onError:(error:any)=>{
               message.success(`${error}`);
           }} );
 
-    const getTravelers = () => {
-        const travelers = [];
-
-        for (let i = 0; i < adults; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'ADULT'
-            });
-        }
-
-        for (let i = 0; i < babies; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'BABY'
-            });
-        }
-
-        for (let i = 0; i < children; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'CHILD'
-            });
-        }
-
-        return travelers;
-    };
-
+   
   const handleReserve = () => {
-    mutate({
-      "originDestinations": [
-        {
-          ...flightLocation,
-          ...flightDestination,
-          "departureDateTime": {
-            "date": moment(flightDate).format("YYYY-MM-DD"),
-            "time": moment(flightDate).format("hh:mm:ss"),
-          }
-        }
-      ],
-      "travelers": getTravelers(),
-      "sources": [
-        "GDS"
-      ]
-    } as any);
+    push("/available-travels")
+  
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
@@ -117,8 +88,8 @@ const AddTravel: React.FC = () => {
         setValue:setAdults
     }, {
         label: "طفل",
-        value: children,
-        setValue:setChildren
+        value: childrens,
+        setValue:setChildrens
     }, {
         label: "رضيع",
         value: babies,

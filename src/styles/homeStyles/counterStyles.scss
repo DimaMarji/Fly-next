@@ -1,5 +1,5 @@
-.counter-input{
-  background-color: #FFFFFF;
+.counter-input {
+  background-color: #ffffff;
   border-color: #a1a1a1;
   padding: 8px;
   display: flex;
@@ -8,15 +8,26 @@
   * {
     text-align: center;
   }
-  .ant-space:first-child{
+  .ant-space:first-child {
     flex-grow: 1;
   }
 
-  .counter-input-label{
+  .counter-input-label {
     color: #196dfb !important;
   }
 
-  .anticon svg{
-   color: #ff56a1;
+  .anticon svg {
+    color: #ff56a1;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .counter-input {
+    .ant-btn-link {
+      padding: 2px 8px !important
+    }
+    .counter-input-value{
+      font-size: 24px
+    }
   }
 }

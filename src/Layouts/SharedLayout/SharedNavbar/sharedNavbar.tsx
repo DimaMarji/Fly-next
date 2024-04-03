@@ -33,7 +33,7 @@ const SharedNavbar = () => {
   ];
 
   return (
-    <Affix offsetTop={1}>
+    <Affix offsetTop={0.1}>
       <Header className="fly-akeed-navbar">
         <Image src={LogoImage} alt="logo" className="logo" />
         <Space>

@@ -1,12 +1,15 @@
+import useTokens from '@/Hooks/Auth/useToken';
 import { useMutation } from 'react-query';
 
-const create = async (data:any,serviceName:string,headers?:any) => {
+const create = async (data:any,serviceName:string,headers?:any, accessToken?:any) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${serviceName}`, {
     method: 'POST',
      headers : {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      ...headers
+      ...headers,
+        Authorization: `Bearer ${accessToken}`,
+      
   },
     body: data,
   });
@@ -17,7 +20,8 @@ const create = async (data:any,serviceName:string,headers?:any) => {
 };
 
 export const useCreate = (serviceName:string,options?:{onSuccess?:any,onError?:any},headers?:any) => {
-  return useMutation((data:any)=>create(data,serviceName,headers),
+  const { accessToken } = useTokens();
+  return useMutation((data:any)=>create(data,serviceName,headers, accessToken),
   {
     onSuccess: (data) => {
       console.log('Mutation succeeded:', data);

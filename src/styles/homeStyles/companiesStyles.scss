@@ -27,3 +27,26 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width:996px)  {
+  .companies-section{
+    padding-inline: 32px;
+    .ant-typography{
+      font-size: 24px;
+    }
+    .logos-list{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .log-div{
+      // width: 200px;
+      img{
+        width:auto;
+        height: 60px;
+        margin: auto;
+  
+      }
+    }
+  }
+}

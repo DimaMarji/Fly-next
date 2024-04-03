@@ -1,0 +1,37 @@
+.travels-container{
+    .travels-container-header{
+        width: 100vw;
+        background-color: #09135B;
+        align-items: center;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        .anticon svg{
+            color: white;
+        }
+
+        .ant-btn{
+            background-color: #09135B;
+            border-color: white;
+            color: white;
+            padding-inline: 20px !important;
+        }
+    }
+}
+
+.travel-loading-div{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: -50px;
+    margin-right: -50px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+    .ant-typography{
+        font-size: 32px !important;
+        margin-bottom: 32px;
+    }
+}

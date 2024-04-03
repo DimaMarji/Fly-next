@@ -27,7 +27,7 @@
 
 .hero {
   position: relative;
-  height: 250px !important;
+  height: 69% !important;
   width: 100% !important;
 
   background: #f9f9f9;
@@ -65,4 +65,23 @@
   margin-right: 8%;
   width: 48px;
   height: auto;
+}
+
+
+@media screen and (max-width:996px)  {
+  .users-feedback-section {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+   
+  }
+  .users-feedback-section-container{
+    padding-bottom: 32px;
+  }
+  .feedback-title {
+    font-size: 20px !important;
+  }
+  .hero{
+    margin-top: 16px;
+  }
 }

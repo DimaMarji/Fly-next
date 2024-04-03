@@ -8,6 +8,7 @@ import { useCreate } from "@/ReactQuery/CreateQuery";
 import { useEffect } from "react";
 import { useMutation } from "react-query";
 import axios from "axios";
+import { TravelContextProvider } from "@/Context/travelContext";
 
 const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
  
@@ -21,10 +22,11 @@ const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
     <div>
       <Layout className="layout">
         <SharedNavbar />
-
-        <Content style={{ padding: "0 50px" }}>
+        <TravelContextProvider>
+        <Content >
           <div className="site-layout-content">{children}</div>
         </Content>
+        </TravelContextProvider>
         <SharedFooter/>
       </Layout>
     </div>

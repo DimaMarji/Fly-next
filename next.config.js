@@ -7,6 +7,7 @@ module.exports = {
   async rewrites() {
     return [
       {source: "/", destination: "/Home"},
+      {source: "/available-travels", destination: "/TravelsList"},
 
     ];
   }
