@@ -39,7 +39,7 @@ const SharedFooter = () => {
                         <div className={"our-office-div"}>
                             <div className={"perth-australia-div"}>
                                 <Text className={"title-text"}
-                                      level={3}>
+                                      >
                                     فلاي أكيد
                                 </Text>
                                 <div className={"our-offices"}>
@@ -60,7 +60,7 @@ const SharedFooter = () => {
                         <div className={"our-law-div"}>
                             <div className={"perth-australia-div"}>
                                 <Text className={"title-text"}
-                                      level={3}>
+                                       >
                                     الدعم
                                 </Text>
                                 <div className={"our-offices"}>
@@ -80,7 +80,7 @@ const SharedFooter = () => {
                         </div>
                         <div className={"our-services-div"}>
                             <Text className={"title-text"}
-                                  level={3}
+                                 
                             >
                                 الأمور القانونية
                             </Text>
@@ -98,7 +98,7 @@ const SharedFooter = () => {
                         </div>
                         <div className={"about-div"}>
                             <Text className={"title-text"}
-                                  level={3}
+                                 
                             >
                                 التحميل
                             </Text>
