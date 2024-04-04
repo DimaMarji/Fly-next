@@ -39,13 +39,6 @@ const AddTravel: React.FC<any> = ({type}) => {
 
  const {push} = useRouter()
 
-
-  const { mutate, isError } = useCreate(
-    "v1/shopping/availability/flight-availabilities"
- ,{onError:(error:any)=>{
-              message.success(`${error}`);
-          }} );
-
    
   const handleReserve = () => {
     push("/available-travels")
