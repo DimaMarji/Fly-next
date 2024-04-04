@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Radio, Space, Spin, Typography,message } from "antd";
+import { AutoComplete, Button, Form, Radio, Space, Spin, Typography,message } from "antd";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import LandingIcon from "../../../../../public/landing.png";
@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { useTravelContext } from "@/Context/travelContext";
 
 const { Text, Title } = Typography;
-const AddTravel: React.FC = () => {
+const AddTravel: React.FC<any> = ({type}) => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState<string>();
@@ -41,7 +41,7 @@ const AddTravel: React.FC = () => {
 
 
   const { mutate, isError } = useCreate(
-    "shopping/availability/flight-availabilities"
+    "v1/shopping/availability/flight-availabilities"
  ,{onError:(error:any)=>{
               message.success(`${error}`);
           }} );
@@ -49,19 +49,18 @@ const AddTravel: React.FC = () => {
    
   const handleReserve = () => {
     push("/available-travels")
-  
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
-    `reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
+    `v1/reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
     { enabled: !!searchValue }
   );
 
 
   const travelOptions = [
-    { label: "السياحية", value: "h" },
-    { label: "الأعمال", value: "hs" },
-    { label: "الأولى", value: "hd" },
+    { label: "السياحية", value: "السياحية" },
+    { label: "الأعمال", value: "الأعمال" },
+    { label: "الأولى", value: "الأولى" },
   ];
 
   useEffect(() => {
@@ -97,7 +96,9 @@ const AddTravel: React.FC = () => {
     },]
 
   return (
-    <div>
+    <Form onFinish={()=>{
+      handleReserve()
+    }}>
       <div className="travel-select">
         <Space className="label">
           <Image
@@ -109,7 +110,9 @@ const AddTravel: React.FC = () => {
 
           <Text>من</Text>
         </Space>
-
+<Form.Item  name={"from-city"} rules={[{validator:()=>{
+          return !!flightDestination? Promise.resolve() :Promise.reject()
+        },message:"الرجاء إدخال المدينة أو المطار"}]}>
         <AutoComplete
           options={options}
           notFoundContent={isLoading ? <Spin /> : 'لا يوجد نتائج'}
@@ -128,6 +131,7 @@ const AddTravel: React.FC = () => {
             });
           }}
         />
+        </Form.Item>
       </div>
       <div className="travel-select">
         <Space className="label">
@@ -139,11 +143,16 @@ const AddTravel: React.FC = () => {
           />
           <Text>إلى</Text>
         </Space>
+        <Form.Item name={"city"} rules={[{validator:()=>{
+          return !!flightDestination? Promise.resolve() :Promise.reject()
+        },message:"الرجاء إدخال المدينة أو المطار"}]}>
         <AutoComplete
           options={options}
           style={{ width: "100%"}}
           placeholder="المدينة أو المطار"
-          onSearch={(text: string) => {}}
+          onSearch={(text: string) => {
+            setSearchValue(text)
+          }}
           onSelect={(value) => {
             const selectedItem=data?.data?.find((item:any)=>item?.id==value)
 
@@ -152,20 +161,22 @@ const AddTravel: React.FC = () => {
             });
           }}
         />
+        </Form.Item>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <CalendarDropdown
+        
           type={"flight"}
           selectedDate={flightDate}
           disabledDates={{ type: "before", date: new Date() }}
           setSelectedDate={setFlightDate}
         />
-        <CalendarDropdown
+     {  type=="withReturn"&&  <CalendarDropdown
           type={"landing"}
           selectedDate={landingDate}
           disabledDates={{ type: "before", date: new Date(flightDate) }}
           setSelectedDate={setLandingDate}
-        />
+        />}
       </div>
 
             <div className={"guests-container"}>
@@ -178,6 +189,7 @@ const AddTravel: React.FC = () => {
       <Radio.Group
         className="flight-type-radio"
         options={travelOptions}
+        defaultValue={"السياحية"}
         onChange={(event) => {
           console.log(event);
           setTravelType(event?.target?.value);
@@ -189,11 +201,11 @@ const AddTravel: React.FC = () => {
       <Button
         className="button-full-width"
         type="primary"
-        onClick={handleReserve}
+        htmlType="submit"
       >
         ابحث عن رحلة
       </Button>
-    </div>
+    </Form>
   );
 };
 

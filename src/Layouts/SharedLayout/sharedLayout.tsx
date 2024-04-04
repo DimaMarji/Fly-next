@@ -9,14 +9,16 @@ import { useEffect } from "react";
 import { useMutation } from "react-query";
 import axios from "axios";
 import { TravelContextProvider } from "@/Context/travelContext";
+import { useRouter } from "next/router";
 
 const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
  
-  // const { mutate } = useCreate(`security/oauth2/token`,{},
-  // {"Content-Type": "application/x-www-form-urlencoded"}
-  // );
+const router=useRouter()
 
 
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   
   return (
     <div>

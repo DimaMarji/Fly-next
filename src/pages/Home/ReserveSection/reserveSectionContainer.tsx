@@ -19,20 +19,20 @@ const flyItems=[
       label: (
           <Text>ذهاب فقط</Text>
       ),
-      children: <AddTravel/>,
+      children: <AddTravel />,
     },
     {
       key: "2",
       label: (
-        <Text>ذهاب وعودة</Text>
+        <Text >ذهاب وعودة</Text>
     ),
-      children: <AddTravel/>,
+      children: <AddTravel type={"withReturn"}/>,
     }, {
         key: "3",
         label: (
           <Text>وجهات متعددة</Text>
       ),
-        children: "Content of Tab Pane 2",
+        children: <AddTravel type={"withReturn"}/>,
       },
   ];
 
