@@ -104,7 +104,7 @@ const AddTravel: React.FC<any> = ({type}) => {
           <Text>من</Text>
         </Space>
 <Form.Item  name={"from-city"} rules={[{validator:()=>{
-          return !!flightDestination? Promise.resolve() :Promise.reject()
+          return !!flightLocation? Promise.resolve() :Promise.reject()
         },message:"الرجاء إدخال المدينة أو المطار"}]}>
         <AutoComplete
           options={options}
