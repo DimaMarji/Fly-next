@@ -1,12 +1,12 @@
 import axios from "axios";
-import ReserveSection from "./ReserveSection/reserveSectionContainer";
-import SecondSection from "./SecondSection/secondSectionContainer";
 import React, {useEffect} from "react";
 import {useMutation} from "react-query";
 import useTokens from "@/Hooks/Auth/useToken";
-import CompaniesSection from "./CompaniesSection/companiesSectionContainer";
-import UsersFeedbackSection from "./UsersFeedbackSection/usersFeedbackSection";
-import BookFlightsSection from "./BookFlightsSection/bookFlightsSection";
+import BookFlightsSection from "@/Components/HomeComponents/BookFlightsSection/bookFlightsSection";
+import UsersFeedbackSection from "@/Components/HomeComponents/UsersFeedbackSection/usersFeedbackSection";
+import CompaniesSection from "@/Components/HomeComponents/CompaniesSection/companiesSectionContainer";
+import SecondSection from "@/Components/HomeComponents/SecondSection/secondSectionContainer";
+import ReserveSection from "@/Components/HomeComponents/ReserveSection/reserveSectionContainer";
 
 // import "./styles.scss"
 const Home: React.FC = () => {

@@ -1,32 +1,41 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Col, List, Row, Space, Spin, Typography, message ,Checkbox, Divider, Slider} from "antd";
-import { Header } from "antd/lib/layout/layout";
+import {
+  Button,
+  Col,
+  List,
+  Row,
+  Space,
+  Spin,
+  Typography,
+  message,
+  Checkbox,
+  Divider,
+  Slider,
+} from "antd";
 import { ArrowRightOutlined, CheckCircleFilled } from "@ant-design/icons";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useCreate } from "@/ReactQuery/CreateQuery";
 import { useTravelContext } from "@/Context/travelContext";
-import TravelsCard from "./TravelsCard/travelsCardContainer";
+import TravelsCard from "../../Components/TravelsList/TravelsCard/travelsCardContainer";
 import FlightIcon from "../../../public/flight.png";
 const { Text, Title } = Typography;
-import Image from "next/image"
-import ScrollToTop from "@/Components/scrollToTop";
+import Image from "next/image";
+
 const TravelsList: React.FC<any> = ({ data }) => {
   const { push } = useRouter();
 
-  const [resultData,setResultData]=useState()
+  const [resultData, setResultData] = useState();
 
-//   const {data:offerData}=useGetAll(`v2/shopping/flight-offers?originLocationCode=SYD&destinationLocationCode=BKK&departureDate=&returnDate=&adults=2&max=5`)
-// console.log(offerData)
   const { mutate, isError, isLoading } = useCreate(
     "v1/shopping/availability/flight-availabilities",
     {
       onError: (error: any) => {
         message.success(`${error}`);
       },
-      onSuccess:(data:any)=>{
-        setResultData(data?.data)
-      }
+      onSuccess: (data: any) => {
+        setResultData(data?.data);
+      },
     }
   );
 
@@ -38,7 +47,7 @@ const TravelsList: React.FC<any> = ({ data }) => {
     babies,
     childrens,
     travelType,
-    landingDate
+    landingDate,
   } = useTravelContext();
 
   const getTravelers = () => {
@@ -69,20 +78,19 @@ const TravelsList: React.FC<any> = ({ data }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     mutate(
       JSON.stringify({
         originDestinations: [
           {
             ...flightLocation,
             ...flightDestination,
-            "departureDateTime": {
-              "date": moment(flightDate).locale("en").format("YYYY-MM-DD"),
-              "time":  moment(flightDate).locale("en").format("HH:mm:ss"),
+            departureDateTime: {
+              date: moment(flightDate).locale("en").format("YYYY-MM-DD"),
+              time: moment(flightDate).locale("en").format("HH:mm:ss"),
               // "timeWindow": "2H",
               // "dateWindow": "P1D"
-          }
-           
+            },
           },
         ],
         travelers: getTravelers(),
@@ -91,11 +99,8 @@ const TravelsList: React.FC<any> = ({ data }) => {
     );
   }, []);
 
-
-
-
   return (
-    <div className="travels-container" >
+    <div className="travels-container">
       <div id="top" className="travels-container-header">
         <ArrowRightOutlined onClick={() => push("/")} />
         <Space direction="vertical">
@@ -124,49 +129,77 @@ const TravelsList: React.FC<any> = ({ data }) => {
           <Spin />
         </div>
       ) : (
-      <Row>
-        <Col span={6}>
-<div className="right-section">
-  <Text className="right-section-title">توقف</Text>
- 
-  <Checkbox checked> <Text>رحلة مباشرة</Text></Checkbox>
-    <Checkbox><Text>1 توقف </Text></Checkbox>
-    <Divider/>
-    <Text className="right-section-title">خطوط الطيران</Text>
-    <Checkbox checked> <Text>طيران الإمارات</Text></Checkbox>
-    <Checkbox><Text>فلاي دبي</Text></Checkbox>
-    <Checkbox checked> <Text>الخطوط السعودية</Text></Checkbox>
-    <Checkbox><Text>طيران ناس</Text></Checkbox>
-    <Checkbox checked> <Text>Flyadeal </Text></Checkbox>
-    <Divider/>
-    <Text className="right-section-title">السعر  </Text>
-    <Slider defaultValue={70}/>
-    <Divider/>
-    <Text className="right-section-title">مدة الرحلة </Text>
-    <Slider defaultValue={40}/>
-    <Divider/>
-    <Text className="right-section-title">الرحلات </Text>
-    <Checkbox checked> <Text>الأقل سعرا </Text></Checkbox>
-    <Checkbox><Text>اختر </Text></Checkbox>
-  
-</div>
+        <Row>
+          <Col span={6}>
+            <div className="right-section">
+              <Text className="right-section-title">توقف</Text>
 
-        </Col>
-        <Col span={14} offset={4}>
-        <Space className="list-label">
-          <Image
-            className="plane-icon"
-            width={36}
-            src={FlightIcon}
-            alt="airplane"
-          />
+              <Checkbox checked>
+                {" "}
+                <Text>رحلة مباشرة</Text>
+              </Checkbox>
+              <Checkbox>
+                <Text>1 توقف </Text>
+              </Checkbox>
+              <Divider />
+              <Text className="right-section-title">خطوط الطيران</Text>
+              <Checkbox checked>
+                {" "}
+                <Text>طيران الإمارات</Text>
+              </Checkbox>
+              <Checkbox>
+                <Text>فلاي دبي</Text>
+              </Checkbox>
+              <Checkbox checked>
+                {" "}
+                <Text>الخطوط السعودية</Text>
+              </Checkbox>
+              <Checkbox>
+                <Text>طيران ناس</Text>
+              </Checkbox>
+              <Checkbox checked>
+                {" "}
+                <Text>Flyadeal </Text>
+              </Checkbox>
+              <Divider />
+              <Text className="right-section-title">السعر </Text>
+              <Slider defaultValue={70} />
+              <Divider />
+              <Text className="right-section-title">مدة الرحلة </Text>
+              <Slider defaultValue={40} />
+              <Divider />
+              <Text className="right-section-title">الرحلات </Text>
+              <Checkbox checked>
+                {" "}
+                <Text>الأقل سعرا </Text>
+              </Checkbox>
+              <Checkbox>
+                <Text>اختر </Text>
+              </Checkbox>
+            </div>
+          </Col>
+          <Col span={14} offset={4}>
+            <Space className="list-label">
+              <Image
+                className="plane-icon"
+                width={36}
+                src={FlightIcon}
+                alt="airplane"
+              />
 
-          <Text className="list-title">رحلة الذهاب</Text>
-        </Space>
-        <List dataSource={resultData} renderItem={(item)=><List.Item><TravelsCard item={item}/></List.Item>}/>
-        </Col>
+              <Text className="list-title">رحلة الذهاب</Text>
+            </Space>
+            <List
+              dataSource={resultData}
+              renderItem={(item) => (
+                <List.Item>
+                  <TravelsCard item={item} />
+                </List.Item>
+              )}
+            />
+          </Col>
         </Row>
-      )} 
+      )}
     </div>
   );
 };
