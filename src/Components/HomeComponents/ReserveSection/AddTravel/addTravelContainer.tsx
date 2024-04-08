@@ -11,6 +11,7 @@ import {useCreate} from "../../../../ReactQuery/CreateQuery";
 import {useGetAll} from "../../../../ReactQuery/GetQuery";
 import { useRouter } from "next/router";
 import { useTravelContext } from "@/Context/travelContext";
+import {CloseOutlined} from "@ant-design/icons"
 
 const { Text, Title } = Typography;
 const AddTravel: React.FC<any> = ({type}) => {
@@ -45,7 +46,7 @@ const AddTravel: React.FC<any> = ({type}) => {
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
-    `v1/reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
+    `https://jevent-user.jevent.event-reg.app/airports?keyword=${searchValue}`,
     { enabled: !!searchValue }
   );
 
@@ -55,6 +56,10 @@ const AddTravel: React.FC<any> = ({type}) => {
     { label: "الأعمال", value: "الأعمال" },
     { label: "الأولى", value: "الأولى" },
   ];
+  const{locale}=useRouter() 
+  console.log(locale)
+
+  console.log(data?.data)
 
   useEffect(() => {
     const newOptions = data?.data?.map((item: any) => {
@@ -62,13 +67,14 @@ const AddTravel: React.FC<any> = ({type}) => {
         label: (
           <div style={{display:"flex",justifyContent:"space-between",padding:"12px"}}>
             <Space direction="vertical">
-              <Text>{item?.address?.cityName}</Text>
-              <Text>{item?.address?.countryName}</Text>
+              <Text>{locale=="ar"?item?.name_ar:item?.name}</Text>
+              <Text>{locale=="ar"?item?.country_ar:item?.country} - {locale=="ar"?item?.city_ar:item?.city}</Text>
             </Space>
-            <Title style={{fontSize:"20px"}}>{item?.address?.cityCode}</Title>
+            <Title style={{fontSize:"20px"}}>{item?.iata}</Title>
           </div>
         ),
-        value: item?.id,
+        value: `${locale=="ar"?item?.country_ar:item?.country}-${locale=="ar"?item?.city_ar:item?.city}`,
+        key: item?.id,
       };
     });
     setOptions(newOptions);
@@ -93,6 +99,7 @@ const AddTravel: React.FC<any> = ({type}) => {
       handleReserve()
     }}>
       <div className="travel-select">
+        <div style={{display:"flex",justifyContent:"space-between"}}>
         <Space className="label">
           <Image
             className="plane-icon"
@@ -103,6 +110,8 @@ const AddTravel: React.FC<any> = ({type}) => {
 
           <Text>من</Text>
         </Space>
+        <CloseOutlined onClick={()=>setFlightLocation(undefined)}/>
+        </div>
 <Form.Item  name={"from-city"} rules={[{validator:()=>{
           return !!flightLocation? Promise.resolve() :Promise.reject()
         },message:"الرجاء إدخال المدينة أو المطار"}]}>
@@ -113,7 +122,8 @@ const AddTravel: React.FC<any> = ({type}) => {
           onSearch={(text: string) => {
             setSearchValue(text);
           }}
-          onSelect={(value) => {
+          onSelect={(value,option) => {
+            
             const selectedItem=data?.data?.find((item:any)=>item?.id==value)
 
             setFlightLocation( {

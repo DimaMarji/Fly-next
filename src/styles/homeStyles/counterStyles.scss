@@ -8,16 +8,28 @@
   * {
     text-align: center;
   }
-  .ant-space:first-child {
+  .ant-space.text-div {
     flex-grow: 1;
   }
 
   .counter-input-label {
     color: #196dfb !important;
+    font-size: 16px;
   }
-
+  .counter-input-value{
+    font-size:32px;
+    font-weight: 400;
+  }
+  .ant-btn{
+    padding: 0;
+    height: 16px;
+  }
+  .ant-space:has(svg){
+gap: 0 !important;
+  }
   .anticon svg {
     color: #ff56a1;
+    font-size: 10px;
   }
 }
 

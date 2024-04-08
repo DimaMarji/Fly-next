@@ -118,7 +118,7 @@ const SharedFooter = () => {
                         <Text
                             className={"copyright-text"}
                         >
-                            جميع الحقوق محفوظة لموقع وتطبيق فلاي أكيد @{currentYear}    </Text>
+                            جميع الحقوق محفوظة لموقع وتطبيق فلاي أكيد © {currentYear}.    </Text>
                     </span>
                     </div>
                 </div>

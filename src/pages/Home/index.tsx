@@ -7,9 +7,15 @@ import UsersFeedbackSection from "@/Components/HomeComponents/UsersFeedbackSecti
 import CompaniesSection from "@/Components/HomeComponents/CompaniesSection/companiesSectionContainer";
 import SecondSection from "@/Components/HomeComponents/SecondSection/secondSectionContainer";
 import ReserveSection from "@/Components/HomeComponents/ReserveSection/reserveSectionContainer";
+import { useTranslation } from 'next-i18next'
+import { useRouter } from "next/router";
 
 // import "./styles.scss"
 const Home: React.FC = () => {
+    const { t } = useTranslation(['common', 'second-page'])
+
+    const{locale}=useRouter() 
+    console.log(locale)
 
     const {setTokens} = useTokens()
     const {mutate, data} = useMutation(

@@ -51,3 +51,11 @@
     }
   }
 }
+
+@media screen and (max-width:700px) {
+  .fly-akeed-navbar{
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 12px;
+  }
+}

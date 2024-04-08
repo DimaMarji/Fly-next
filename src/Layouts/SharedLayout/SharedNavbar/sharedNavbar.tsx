@@ -5,12 +5,16 @@ import LogoImage from "../../../../public/Logo-Dark.webp";
 import SADFlagImage from "../../../../public/saudi-arabia-flag-icon-64.png";
 import USAFlagImage from "../../../../public/united-states.png";
 import { useState } from "react";
+import { useRouter } from "next/router";
 const { Text, Title } = Typography;
 
 const SharedNavbar = () => {
+  const router =useRouter()
+
   const [currentLanguage, setCurrentLanguage] = useState<
     "العربية" | "English"
-  >("العربية");
+  >(router.locale=="ar"?"العربية":"English");
+ 
   const priceOptions = [
     {
       value: "ar",
@@ -44,6 +48,7 @@ const SharedNavbar = () => {
             options={priceOptions}
           />
           <Button className="lang-button" onClick={()=>{
+             router.push(router.locale=="ar"?'/en':"/ar", router.locale=="ar"?'/en':"/ar", { locale: router.locale=="ar"?'en':"ar" })
             setCurrentLanguage((prev)=>{
               return prev=="English"?"العربية":"English"
             })

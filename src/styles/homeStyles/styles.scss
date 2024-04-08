@@ -8,7 +8,7 @@
   padding-top: 32px;
   padding-bottom: 32px;
   width: 100%;
-  padding-inline: 8%;
+  padding-inline: 5%;
 
   .reserve-tabs {
     width: 100%;
@@ -22,6 +22,7 @@
       gap: 15px;
 
       .ant-tabs-tab {
+        font-size: 16px;
         flex-grow: 1;
         justify-content: center;
         border: none;
@@ -48,6 +49,8 @@
   .button-full-width {
     width: 100% !important;
     margin-top: 10px;
+    padding: 11px 12px;
+    font-size: 24px;
   }
 }
 
@@ -57,6 +60,14 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  .ant-select-selection-placeholder{
+    font-size: 24px;
+  }
+  input{
+    color:rgb(26, 31, 113);
+    font-size: 24px;
+  }
   .ant-select-selector {
     border: none !important;
     box-shadow: none !important;
@@ -64,6 +75,7 @@
   .label {
     .ant-typography {
       color: #ff56a1;
+      font-size: 16px;
     }
     img {
       filter: invert(50%) sepia(20%) saturate(1781%) hue-rotate(284deg)
@@ -86,6 +98,7 @@
   flex-direction: column;
   .title {
     color: #196dfb;
+    font-size: 16px;
   }
   .month-year {
     display: grid;
@@ -104,9 +117,15 @@
   .ant-radio-button-wrapper {
     flex-grow: 1;
     text-align: center;
+    padding: 12px 16px;
+    height: auto;
+    font-size: 16px;
+    color:#196dfb;
   }
   .ant-radio-button-wrapper-checked {
     background-color: #196dfb !important;
+    color: #fff;
+   
   }
 }
 
@@ -130,6 +149,11 @@
     }
     .ant-tabs-tab{
       padding-inline: 6px !important;
+      font-size: 16px;
     }
   }
+}
+.hero-section-image{
+  width: 100%;
+  height: auto;
 }

@@ -37,11 +37,11 @@ const CalendarDropdown: React.FC<ICalendarDropdown> = ({
         <Text className="title">تاريخ {`${type=="flight"?"المغادرة":"العودة"}`}</Text>
         <Space>
           <Text style={{ fontSize: "32px" }}>
-            {moment(selectedDate).locale("ar_SA").format("DD")}
+            {moment(selectedDate).locale("en").format("D")}
           </Text>
           <div className="month-year">
             <Text>{moment(selectedDate).locale("ar_SA").format("MMMM")}</Text>
-            <Text>{moment(selectedDate).locale("ar_SA").format("yyyy")}</Text>
+            <Text>{moment(selectedDate).locale("en").format("yyyy")}</Text>
           </div>
         </Space>
       </div>

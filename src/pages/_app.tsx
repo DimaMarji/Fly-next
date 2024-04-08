@@ -2,8 +2,9 @@ import SharedLayout from "@/Layouts/SharedLayout/sharedLayout";
 import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps }: AppProps) {
+const  App=({ Component, pageProps }: AppProps) =>{
   
   const queryClient = new QueryClient({})
 
@@ -16,3 +17,4 @@ export default function App({ Component, pageProps }: AppProps) {
     </QueryClientProvider>
   );
 }
+export default appWithTranslation(App)
