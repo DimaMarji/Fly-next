@@ -2,7 +2,7 @@ import useTokens from '@/Hooks/Auth/useToken';
 import { UseQueryOptions, useQuery } from 'react-query';
 
 const fetchData = async (serviceName: string, accessToken: string|null) => {
-  const response = await fetch(`${serviceName}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${serviceName}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

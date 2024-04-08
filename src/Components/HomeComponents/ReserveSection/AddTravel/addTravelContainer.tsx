@@ -46,7 +46,7 @@ const AddTravel: React.FC<any> = ({type}) => {
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
-    `https://jevent-user.jevent.event-reg.app/airports?keyword=${searchValue}`,
+    `v1/reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
     { enabled: !!searchValue }
   );
 
@@ -57,9 +57,7 @@ const AddTravel: React.FC<any> = ({type}) => {
     { label: "الأولى", value: "الأولى" },
   ];
   const{locale}=useRouter() 
-  console.log(locale)
-
-  console.log(data?.data)
+  
 
   useEffect(() => {
     const newOptions = data?.data?.map((item: any) => {
@@ -67,13 +65,13 @@ const AddTravel: React.FC<any> = ({type}) => {
         label: (
           <div style={{display:"flex",justifyContent:"space-between",padding:"12px"}}>
             <Space direction="vertical">
-              <Text>{locale=="ar"?item?.name_ar:item?.name}</Text>
-              <Text>{locale=="ar"?item?.country_ar:item?.country} - {locale=="ar"?item?.city_ar:item?.city}</Text>
+              <Text>{item?.address?.cityName}</Text>
+              <Text>{item?.address?.countryName}</Text>
             </Space>
-            <Title style={{fontSize:"20px"}}>{item?.iata}</Title>
+            <Title style={{fontSize:"20px"}}>{item?.address?.cityCode}</Title>
           </div>
         ),
-        value: `${locale=="ar"?item?.country_ar:item?.country}-${locale=="ar"?item?.city_ar:item?.city}`,
+        value: `${item?.address?.countryName} - ${item?.address?.cityName}`,
         key: item?.id,
       };
     });
@@ -110,7 +108,6 @@ const AddTravel: React.FC<any> = ({type}) => {
 
           <Text>من</Text>
         </Space>
-        <CloseOutlined onClick={()=>setFlightLocation(undefined)}/>
         </div>
 <Form.Item  name={"from-city"} rules={[{validator:()=>{
           return !!flightLocation? Promise.resolve() :Promise.reject()
@@ -122,10 +119,10 @@ const AddTravel: React.FC<any> = ({type}) => {
           onSearch={(text: string) => {
             setSearchValue(text);
           }}
-          onSelect={(value,option) => {
+          onSelect={(value,option:any) => {
             
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
-
+            const selectedItem=data?.data?.find((item:any)=>item?.id==option?.key)
+console.log(selectedItem)
             setFlightLocation( {
               "id": 1,
               "originLocationCode": selectedItem?.iataCode,
@@ -156,8 +153,9 @@ const AddTravel: React.FC<any> = ({type}) => {
           onSearch={(text: string) => {
             setSearchValue(text)
           }}
-          onSelect={(value) => {
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
+          onSelect={(value,option:any) => {
+            console.log("value,option",value,option)
+            const selectedItem=data?.data?.find((item:any)=>item?.id==option?.key)
 
             setFlightDestination( {
               "destinationLocationCode": selectedItem?.iataCode,

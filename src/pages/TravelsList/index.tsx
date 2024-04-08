@@ -31,7 +31,7 @@ const TravelsList: React.FC<any> = ({ data }) => {
     "v1/shopping/availability/flight-availabilities",
     {
       onError: (error: any) => {
-        message.success(`${error}`);
+        message.error(`an error occured`);
       },
       onSuccess: (data: any) => {
         setResultData(data?.data);
