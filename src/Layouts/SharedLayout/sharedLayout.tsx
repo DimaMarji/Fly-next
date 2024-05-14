@@ -1,33 +1,62 @@
-import { Content, Footer } from "antd/lib/layout/layout";
-import SharedNavbar from "./SharedNavbar/sharedNavbar";
-import { ISharedLayoutProps } from "./interface";
-import { Layout } from "antd";
-import { useAppMediaQuery } from "@/Hooks/MediaQuery/use-app-media-query";
-import SharedFooter from "./Footer/sharedFooter";
-import { useCreate } from "@/ReactQuery/CreateQuery";
-import { useEffect } from "react";
-import { useMutation } from "react-query";
-import axios from "axios";
+import {Content, Footer} from "antd/lib/layout/layout";
+import {ISharedLayoutProps} from "./interface";
+import {Layout, Menu, Typography} from "antd";
 
-const SharedLayout: React.FC<ISharedLayoutProps> = ({ children }) => {
- 
-  // const { mutate } = useCreate(`security/oauth2/token`,{},
-  // {"Content-Type": "application/x-www-form-urlencoded"}
-  // );
+const SharedLayout: React.FC<ISharedLayoutProps> = ({children}) => {
 
+    // const { mutate } = useCreate(`security/oauth2/token`,{},
+    // {"Content-Type": "application/x-www-form-urlencoded"}
+    // );
+    const {Content, Footer, Header, Sider} = Layout
+    const {Title} = Typography
 
-  
-  return (
-    <div>
-      <Layout className="layout">
-        <SharedNavbar />
+    const items = [{
+        key: "String(index + 1)",
+        icon: "React.createElement(icon)",
+        label: "nav ${index + 1}",
+    }, {
+        key: "String(index + 1)",
+        icon: "React.createElement(icon)",
+        label: "nav ${index + 1}",
+    }, {
+        key: "String(index + 1)",
+        icon: "React.createElement(icon)",
+        label: "nav ${index + 1}",
+    },]
 
-        <Content style={{ padding: "0 50px" }}>
-          <div className="site-layout-content">{children}</div>
-        </Content>
-        <SharedFooter/>
-      </Layout>
-    </div>
-  );
+    return (
+        <div>
+            <Layout>
+                <Sider
+                    className={"sidebar-container"}
+                    breakpoint="lg"
+                    collapsedWidth="0"
+
+                    onCollapse={(collapsed, type) => {
+                        console.log(collapsed, type);
+                    }}
+                >
+                    <Title style={{fontSize:"16px"}}>الجولات الاستشارية</Title>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items}/>
+                </Sider>
+                <Layout>
+                    <Header theme={"light"}/>
+                    <Content style={{margin: '24px 16px 0'}}>
+                        <div
+                            style={{
+                                padding: 24,
+                                minHeight: 360,
+                            }}
+                        >
+                            {children}
+                        </div>
+                    </Content>
+                    <Footer style={{textAlign: 'center'}}>
+                        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+                    </Footer>
+                </Layout>
+            </Layout>
+        </div>
+    );
 };
 export default SharedLayout;
