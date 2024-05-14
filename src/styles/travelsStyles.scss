@@ -1,0 +1,118 @@
+.travels-container{
+    .travels-container-header{
+        width: 100vw;
+        background-color: #09135B;
+        align-items: center;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        .anticon svg{
+            color: white;
+        }
+
+        .ant-btn{
+            background-color: #09135B;
+            border-color: white;
+            color: white;
+            padding-inline: 20px !important;
+        }
+    }
+
+    .plane-icon{
+        filter: invert(50%) sepia(20%) saturate(1781%) hue-rotate(284deg)
+        brightness(99%) contrast(104%);
+        // transform: rotate();
+
+    }
+}
+
+.travel-loading-div{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: -50px;
+    margin-right: -50px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+    .ant-typography{
+        font-size: 32px !important;
+        margin-bottom: 32px;
+    }
+}
+.travel-card{
+    width: 100%;
+    // background-color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color:#F0F2F5;
+
+    .time-text{
+        font-weight: 800;
+        font-size: 18px;
+        color: #09135B;
+        line-height: 120%;
+    }
+   
+    >div{
+        border-radius: 8px;
+        border: 1px solid #F0F2F5;
+        background-color: #FFF;
+        &:first-child{
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+    .seat-image{
+        filter: invert(61%) sepia(40%) saturate(589%) hue-rotate(140deg) brightness(89%) contrast(93%);
+    }
+    .ant-btn{
+        padding: 8px 62px;
+        border-radius: 4px;
+    }
+    .ant-space{
+        padding: 20px;
+    }
+    .book-button{
+       border: 1px solid #F0F2F5;
+    }
+    
+}
+.list-title{
+    font-weight: 900;
+    font-size: 24px;
+    color: #09135B;
+}
+.list-label{
+    padding-top: 36px;
+}
+
+.right-section{
+    padding-right: 60px;
+    padding-top: 36px;
+    padding-right: 36px ;
+    padding-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+
+    .ant-checkbox-checked .ant-checkbox-inner{
+        color: #086DEE;
+        background-color: #086DEE;
+        border-radius: 50%;
+    }
+    .ant-checkbox-inner{
+    
+        border-radius: 50%;
+    }
+    .right-section-title{
+        color: #086DEE;
+    }
+    .ant-slider-track{
+        background-color: #086DEE;
+    }
+}

@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Radio, Space, Spin, Typography,message } from "antd";
+import { AutoComplete, Button, Form, Radio, Space, Spin, Typography,message } from "antd";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import LandingIcon from "../../../../../public/landing.png";
@@ -9,89 +9,55 @@ import moment from "moment";
 import {CounterInput} from "./CounterInput";
 import {useCreate} from "../../../../ReactQuery/CreateQuery";
 import {useGetAll} from "../../../../ReactQuery/GetQuery";
+import { useRouter } from "next/router";
+import { useTravelContext } from "@/Context/travelContext";
+import {CloseOutlined} from "@ant-design/icons"
 
 const { Text, Title } = Typography;
-const AddTravel: React.FC = () => {
+const AddTravel: React.FC<any> = ({type}) => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState<string>();
 
-  const [flightDate, setFlightDate] = useState<any>();
-  const [landingDate, setLandingDate] = useState<any>();
-  const [travelType, setTravelType] = useState<any>();
+  const {
+    flightLocation,
+    setFlightLocation,
+    flightDestination,
+    setFlightDestination,
+    flightDate,
+    setFlightDate,
+    landingDate,
+    setLandingDate,
+    travelType,
+    setTravelType,
+    adults,
+    setAdults,
+    babies,
+    setBabies,
+    childrens,
+    setChildrens,
+  } = useTravelContext();
 
-  const [flightLocation, setFlightLocation] = useState<any>();
-  const [flightDestination, setFlightDestination] = useState<any>();
+ const {push} = useRouter()
 
-    const [adults, setAdults] = useState<number>(0);
- const [babies, setBabies] = useState<number>(0);
- const [children, setChildren] = useState<number>(0);
-
-
-
-  const { mutate, isError } = useCreate(
-    "shopping/availability/flight-availabilities"
- ,{onError:(error)=>{
-              message.success(`${error}`);
-          }} );
-
-    const getTravelers = () => {
-        const travelers = [];
-
-        for (let i = 0; i < adults; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'ADULT'
-            });
-        }
-
-        for (let i = 0; i < babies; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'BABY'
-            });
-        }
-
-        for (let i = 0; i < children; i++) {
-            travelers.push({
-                id: (i + 1).toString(),
-                travelerType: 'CHILD'
-            });
-        }
-
-        return travelers;
-    };
-
+   
   const handleReserve = () => {
-    mutate({
-      "originDestinations": [
-        {
-          ...flightLocation,
-          ...flightDestination,
-          "departureDateTime": {
-            "date": moment(flightDate).format("YYYY-MM-DD"),
-            "time": moment(flightDate).format("hh:mm:ss"),
-          }
-        }
-      ],
-      "travelers": getTravelers(),
-      "sources": [
-        "GDS"
-      ]
-    } as any);
+    push("/available-travels")
   };
 
   const { data, isSuccess,isLoading } = useGetAll(
-    `reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
+    `v1/reference-data/locations?subType=CITY,AIRPORT&keyword=${searchValue}`,
     { enabled: !!searchValue }
   );
 
 
   const travelOptions = [
-    { label: "السياحية", value: "h" },
-    { label: "الأعمال", value: "hs" },
-    { label: "الأولى", value: "hd" },
+    { label: "السياحية", value: "السياحية" },
+    { label: "الأعمال", value: "الأعمال" },
+    { label: "الأولى", value: "الأولى" },
   ];
+  const{locale}=useRouter() 
+  
 
   useEffect(() => {
     const newOptions = data?.data?.map((item: any) => {
@@ -105,7 +71,8 @@ const AddTravel: React.FC = () => {
             <Title style={{fontSize:"20px"}}>{item?.address?.cityCode}</Title>
           </div>
         ),
-        value: item?.id,
+        value: `${item?.address?.countryName} - ${item?.address?.cityName}`,
+        key: item?.id,
       };
     });
     setOptions(newOptions);
@@ -117,8 +84,8 @@ const AddTravel: React.FC = () => {
         setValue:setAdults
     }, {
         label: "طفل",
-        value: children,
-        setValue:setChildren
+        value: childrens,
+        setValue:setChildrens
     }, {
         label: "رضيع",
         value: babies,
@@ -126,8 +93,11 @@ const AddTravel: React.FC = () => {
     },]
 
   return (
-    <div>
+    <Form onFinish={()=>{
+      handleReserve()
+    }}>
       <div className="travel-select">
+        <div style={{display:"flex",justifyContent:"space-between"}}>
         <Space className="label">
           <Image
             className="plane-icon"
@@ -138,7 +108,10 @@ const AddTravel: React.FC = () => {
 
           <Text>من</Text>
         </Space>
-
+        </div>
+<Form.Item  name={"from-city"} rules={[{validator:()=>{
+          return !!flightLocation? Promise.resolve() :Promise.reject()
+        },message:"الرجاء إدخال المدينة أو المطار"}]}>
         <AutoComplete
           options={options}
           notFoundContent={isLoading ? <Spin /> : 'لا يوجد نتائج'}
@@ -146,9 +119,10 @@ const AddTravel: React.FC = () => {
           onSearch={(text: string) => {
             setSearchValue(text);
           }}
-          onSelect={(value) => {
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
-
+          onSelect={(value,option:any) => {
+            
+            const selectedItem=data?.data?.find((item:any)=>item?.id==option?.key)
+console.log(selectedItem)
             setFlightLocation( {
               "id": 1,
               "originLocationCode": selectedItem?.iataCode,
@@ -157,6 +131,7 @@ const AddTravel: React.FC = () => {
             });
           }}
         />
+        </Form.Item>
       </div>
       <div className="travel-select">
         <Space className="label">
@@ -168,33 +143,41 @@ const AddTravel: React.FC = () => {
           />
           <Text>إلى</Text>
         </Space>
+        <Form.Item name={"city"} rules={[{validator:()=>{
+          return !!flightDestination? Promise.resolve() :Promise.reject()
+        },message:"الرجاء إدخال المدينة أو المطار"}]}>
         <AutoComplete
           options={options}
           style={{ width: "100%"}}
           placeholder="المدينة أو المطار"
-          onSearch={(text: string) => {}}
-          onSelect={(value) => {
-            const selectedItem=data?.data?.find((item:any)=>item?.id==value)
+          onSearch={(text: string) => {
+            setSearchValue(text)
+          }}
+          onSelect={(value,option:any) => {
+            console.log("value,option",value,option)
+            const selectedItem=data?.data?.find((item:any)=>item?.id==option?.key)
 
             setFlightDestination( {
               "destinationLocationCode": selectedItem?.iataCode,
             });
           }}
         />
+        </Form.Item>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <CalendarDropdown
+        
           type={"flight"}
           selectedDate={flightDate}
           disabledDates={{ type: "before", date: new Date() }}
           setSelectedDate={setFlightDate}
         />
-        <CalendarDropdown
+     {  type=="withReturn"&&  <CalendarDropdown
           type={"landing"}
           selectedDate={landingDate}
           disabledDates={{ type: "before", date: new Date(flightDate) }}
           setSelectedDate={setLandingDate}
-        />
+        />}
       </div>
 
             <div className={"guests-container"}>
@@ -207,6 +190,7 @@ const AddTravel: React.FC = () => {
       <Radio.Group
         className="flight-type-radio"
         options={travelOptions}
+        defaultValue={"السياحية"}
         onChange={(event) => {
           console.log(event);
           setTravelType(event?.target?.value);
@@ -218,11 +202,11 @@ const AddTravel: React.FC = () => {
       <Button
         className="button-full-width"
         type="primary"
-        onClick={handleReserve}
+        htmlType="submit"
       >
         ابحث عن رحلة
       </Button>
-    </div>
+    </Form>
   );
 };
 

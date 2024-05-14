@@ -10,6 +10,7 @@ const useTokens = () => {
   const setTokens = (newAccessToken: string|null, newRefreshToken: string|null) => {
     setAccessToken(newAccessToken);
     setRefreshToken(newRefreshToken);
+    setCookie('accessToken', newAccessToken, { path: '/' });
   };
 
   // Clear the tokens
@@ -28,12 +29,8 @@ const useTokens = () => {
   }, [accessToken, setCookie, removeCookie]);
 
   useEffect(() => {
-    if (refreshToken) {
-      setCookie('refreshToken', refreshToken, { path: '/' });
-    } else {
-      removeCookie('refreshToken');
-    }
-  }, [refreshToken, setCookie, removeCookie]);
+  setAccessToken(cookies.accessToken)
+  }, [cookies.accessToken]);
 
   return {
     accessToken,
