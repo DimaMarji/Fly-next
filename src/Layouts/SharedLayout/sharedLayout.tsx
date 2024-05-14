@@ -1,6 +1,8 @@
 import {Content, Footer} from "antd/lib/layout/layout";
 import {ISharedLayoutProps} from "./interface";
-import {Layout, Menu, Typography} from "antd";
+import {Layout, Menu, Space, Typography} from "antd";
+import {UserDetails} from "../../Components/UserDetails/index";
+import Image from "next/image";
 
 const SharedLayout: React.FC<ISharedLayoutProps> = ({children}) => {
 
@@ -11,37 +13,54 @@ const SharedLayout: React.FC<ISharedLayoutProps> = ({children}) => {
     const {Title} = Typography
 
     const items = [{
-        key: "String(index + 1)",
-        icon: "React.createElement(icon)",
-        label: "nav ${index + 1}",
+        key: "الاعدادات",
+        // icon: "React.createElement(icon)",
+        label: "الاعدادات",
+    },{
+        key: "المدن",
+        // icon: "React.createElement(icon)",
+        label: "المدن",
     }, {
-        key: "String(index + 1)",
-        icon: "React.createElement(icon)",
-        label: "nav ${index + 1}",
+        key: "المندوبين",
+        // icon: "React.createElement(icon)",
+        label: "المندوبين",
     }, {
-        key: "String(index + 1)",
-        icon: "React.createElement(icon)",
-        label: "nav ${index + 1}",
+        key: "الباقات",
+        // icon: "React.createElement(icon)",
+        label: "الباقات",
     },]
+
+    const fakeUser = {
+        first_name: "ديمة",
+        last_name: "المرجي",
+        email: "Dima@email.com",
+        avatar: undefined
+    }
 
     return (
         <div>
-            <Layout>
+            <Layout style={{minHeight: "100vh"}}>
                 <Sider
                     className={"sidebar-container"}
                     breakpoint="lg"
                     collapsedWidth="0"
+                    width={255}
 
                     onCollapse={(collapsed, type) => {
                         console.log(collapsed, type);
                     }}
                 >
-                    <Title style={{fontSize:"16px"}}>الجولات الاستشارية</Title>
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items}/>
+                    <Space className={"sidebar-logo"}>
+
+                        <Title style={{fontSize: "19px"}}>الجولات الاستشارية</Title>
+                        <Image height={32} width={32} src={"/arrow.svg"} alt={"arrow"}/>
+                    </Space>
+                    <UserDetails {...fakeUser} />
+                    <Menu style={{textAlign:"right"}} mode="inline" defaultSelectedKeys={['4']} items={items}/>
                 </Sider>
-                <Layout>
-                    <Header theme={"light"}/>
-                    <Content style={{margin: '24px 16px 0'}}>
+                <Layout style={{padding:"12px 32px 32px 32px"}}>
+                    <Header style={{background:"#FFFF"}} />
+                    <Content style={{margin: '24px 16px 0',background:""}}>
                         <div
                             style={{
                                 padding: 24,
