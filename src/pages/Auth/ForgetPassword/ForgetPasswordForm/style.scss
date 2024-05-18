@@ -1,0 +1,109 @@
+@import "../../../../Styles/Helpers/mixins";
+@import "../style";
+
+.forget-password-container {
+  @extend %form-style;
+  width: 470px;
+  height: 540px;
+  padding: 32px 40px;
+  @include media-query(tablet-and-mobile) {
+    align-items: unset;
+    padding: 16px;
+  }
+
+  .ant-form-item-control {
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+    @include media-query(tablet-and-mobile) {
+      width: 100%;
+    }
+  }
+
+  .forget-password-title {
+    @include media-query(tablet-and-mobile) {
+      display: flex;
+      gap: 16px;
+      justify-content: start;
+    }
+  }
+
+  .forget-password-description {
+    margin-top: 16px;
+    @include media-query(tablet-and-mobile) {
+      margin-top: 56px;
+      text-align: left;
+    }
+  }
+
+  .ant-checkbox + span {
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .recaptcha {
+    div:first-child {
+      margin: auto;
+    }
+  }
+
+  .email-form-item.ant-form-item {
+    margin: 26px 0 26px;
+    @include media-query(tablet-and-mobile) {
+      margin: 16px 0 32px;
+    }
+  }
+
+  .recaptcha-form-item.ant-form-item {
+    margin-bottom: 32px;
+  }
+
+  .ant-checkbox-wrapper {
+    margin-bottom: 16px;
+    @include media-query(tablet-and-mobile) {
+      width: 100%;
+    }
+  }
+
+  .buttons-section {
+    display: grid;
+    gap: 16px;
+    justify-items: center;
+    @include media-query(tablet-and-mobile) {
+      margin-bottom: 100px;
+    }
+
+    .account-submit-button {
+      width: 100%;
+      @include media-query(tablet-and-mobile) {
+        padding: 14px 16px;
+      }
+    }
+
+    .back-to-login-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .ant-typography {
+        color: #1F83F4 !important;
+      }
+    }
+  }
+
+  .ant-form {
+    @include media-query(tablet-and-mobile) {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      .recaptcha-wrapper {
+        flex: 1;
+      }
+    }
+
+  }
+}
+
+.go-to-login-btn {
+  margin-top: 2.5vw;
+}

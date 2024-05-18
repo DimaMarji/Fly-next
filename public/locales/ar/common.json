@@ -1,0 +1,26 @@
+{
+    "dashboard": "الجولات الاستشارية",
+    "totalPayments": "المدفوعات الكلي",
+    "currentSubscriptions": "اشتراكات الشهر الحالي",
+    "packageValue": "قيمة الباقات",
+    "completedTours": "جولة تم القيام بها",
+    "agents": "مندوبين",
+    "clients": "عملاء",
+    "addNewAgent": "إضافة مندوب جديد",
+    "search": "بحث",
+    "serialNumber": "الرقم التسلسلي",
+    "agentName": "اسم المندوب",
+    "email": "البريد الإلكتروني",
+    "commission": "العمولة",
+    "tours": "الجولات",
+    "accountStatus": "حالة الحساب",
+    "dues": "المستحقات",
+    "paymentStatus": "تم الدفع",
+    "actions": "العمليات",
+    "active": "مفعل",
+    "inactive": "غير مفعل",
+    "edit": "تعديل",
+    "details": "تفاصيل",
+    "delete": "حذف"
+  }
+  

@@ -1,0 +1,109 @@
+@import "../../../Styles/Helpers/mixins";
+@import "../../../Styles/Helpers/mixins";
+
+
+.Login-form {
+  padding-top: 22%;
+  padding-bottom: 22%;
+
+  .Login-title {
+    margin: 0 22px 64px 22px;
+
+    .title-en-open-sans-40px-32px-32px-semi-bold-semi-bold-semi-bold.ant-typography {
+
+      color: #42526D;
+    }
+
+    .title-en-nordeco-40px-32px-32px-semi-bold-semi-bold-semi-bold {
+      text-align: start;
+    }
+  }
+
+  .ant-input:nth-child(1) {
+    padding: 7px 12px;
+    height: 41px;
+    border-radius: 8px;
+    border-color: #C7E0FC;
+  }
+
+  .ant-input-affix-wrapper {
+    padding: 0px 12px;
+
+  }
+
+  .ant-form-item:nth-child(2) {
+    .ant-input-affix-wrapper {
+      border-radius: 8px !important;
+      border-color: #C7E0FC !important;
+      height: 41px;
+
+      input {
+        height: auto;
+        margin-left: -20px;
+      }
+    }
+  }
+
+  .Login-button {
+    width: 100% !important;
+    padding: 8px !important;
+    margin-top: 10%;
+  }
+
+
+}
+
+.Login-image {
+  background: #165dad;
+
+  .ant-image {
+    width: 100% !important;
+    height: 100vh;
+  }
+}
+
+.Login-mobile-title {
+  display: none;
+}
+
+@include media-query(tablet-and-mobile) {
+  .Login-form {
+
+    padding-top: 13%;
+
+    .ant-input {
+      padding: 8px 12px;
+      height: 39px;
+    }
+  }
+
+  .Login-button {
+    width: 100% !important;
+    padding: 8px !important;
+    margin-top: 90px !important;
+  }
+
+
+  .Login-image {
+    background: #165dad;
+
+    .ant-image {
+      height: 77vh
+    }
+  }
+
+  .Login-title {
+    display: none;
+  }
+
+  .Login-mobile-title {
+    display: block;
+    margin: 44px auto 36px !important;
+    text-align: left;
+
+    .title-en-open-sans-40px-32px-32px-semi-bold-semi-bold-semi-bold.ant-typography {
+
+      color: #42526D;
+    }
+  }
+}

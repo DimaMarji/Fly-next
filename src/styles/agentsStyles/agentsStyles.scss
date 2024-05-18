@@ -1,0 +1,32 @@
+.agents-page {
+    padding: 24px;
+    background: #f0f2f5;
+  }
+  
+  .agents-table .table-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .status-active {
+    color: green;
+  }
+  
+  .status-inactive {
+    color: red;
+  }
+  
+  .status-paid {
+    color: green;
+  }
+  
+  .status-unpaid {
+    color: red;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard, .agents-page {
+      padding: 16px;
+    }
+  }

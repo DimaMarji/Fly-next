@@ -1,0 +1,56 @@
+@import "../../../Styles/Helpers/mixins";
+
+%form-style {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 2px 4px 30px 2px rgba(31, 131, 244, 0.1);
+  @include media-query(tablet-and-mobile) {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
+
+.forgetPasswordContainer {
+
+  @include central-page();
+
+}
+
+
+.forgetPasswordContainer .ant-card.ant-card-bordered.card {
+
+  grid-area: content;
+
+}
+
+@include media-query(tablet) {
+  .forgetPasswordContainer {
+
+    grid-template-columns: auto 80vw auto;
+    grid-template-rows: 20vh auto;
+    grid-template-areas: ". . ." ". content .";
+
+  }
+  .forgetPasswordContainer .ant-card.ant-card-bordered.card {
+    width: 100% !important;
+  }
+}
+
+@include media-query(mobile) {
+  .forgetPasswordContainer {
+    grid-template-columns: auto 90vw auto;
+    grid-template-rows: 20vh auto;
+    grid-template-areas: ". . ." ". content .";
+
+  }
+  .forgetPasswordContainer .ant-card.ant-card-bordered.card {
+    width: 100% !important;
+  }
+  .forgetPasswordContainer .ant-card-body {
+    padding: 12px !important;
+  }
+
+}

@@ -1,0 +1,57 @@
+@import "../../../../Styles/Helpers/mixins";
+@import "../style";
+
+.change-password-container {
+  @extend %form-style;
+  width: 450px;
+  height: 550px;
+  padding: 40px 40px 0 40px;
+  @include media-query(tablet-and-mobile) {
+    align-items: unset;
+    padding: 16px;
+  }
+
+  .change-password-title {
+    margin-top: 32px;
+    @include media-query(tablet-and-mobile) {
+      display: flex;
+      gap: 16px;
+      justify-content: start;
+      margin-top: 0;
+    }
+  }
+
+  .ant-form-item-control {
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+    @include media-query(tablet-and-mobile) {
+      width: 100%;
+    }
+  }
+
+  .ant-form-large .ant-form-item-label > label {
+    height: fit-content;
+  }
+
+  .change-password-button {
+    width: 100% !important;
+    margin-top: 16px;
+    @include media-query(tablet-and-mobile) {
+      padding: 14px 16px !important;
+    }
+  }
+
+  .ant-form {
+    @include media-query(tablet-and-mobile) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      margin-bottom: 100px !important;
+      .ant-form-item {
+        width: 100%;
+      }
+    }
+  }
+}

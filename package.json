@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@zeit/next-css": "^1.0.1",
     "antd": "^4.24.16",
     "axios": "^1.6.8",
@@ -22,6 +23,7 @@
     "react-dom": "^18",
     "react-query": "^3.39.3",
     "react-responsive": "^10.0.0",
+    "recharts": "^2.12.7",
     "sass": "^1.72.0",
     "sharp": "^0.33.3"
   },

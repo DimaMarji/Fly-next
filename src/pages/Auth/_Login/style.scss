@@ -1,0 +1,51 @@
+@import "../../../Styles/Helpers/mixins";
+
+.loginContainer {
+
+  @include central-page();
+
+  #password {
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
+
+
+.loginContainer .ant-card.ant-card-bordered.card {
+
+  grid-area: content;
+
+}
+
+.button-custom-style.account-submit-button {
+  width: 100% !important;
+  background-color: #FFFFFF !important;
+}
+
+@include media-query(tablet) {
+  .loginContainer {
+
+    grid-template-columns: auto 80vw auto;
+    grid-template-rows: 20vh auto;
+    grid-template-areas: ". . ." ". content .";
+
+  }
+  .loginContainer .ant-card.ant-card-bordered.card {
+    width: 100% !important;
+  }
+}
+
+@include media-query(mobile) {
+  .loginContainer {
+
+    grid-template-columns: auto 90vw auto;
+    grid-template-rows: 20vh auto;
+    grid-template-areas: ". . ." ". content .";
+
+  }
+  .loginContainer .ant-card.ant-card-bordered.card {
+    width: 100% !important;
+  }
+  .loginContainer .ant-card-body {
+    padding: 10px;
+  }
+}
